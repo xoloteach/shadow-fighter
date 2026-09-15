@@ -55,7 +55,11 @@ func _ready() -> void:
 	game_over_modal.visible = false
 	
 	restart_button.pressed.connect(_on_restart_pressed)
-	touch_toggle_button.pressed.connect(_on_touch_toggle_pressed)
+	# Keyboard remains the desktop control scheme. Touch controls are enabled only
+	# on a device that advertises touch capability, avoiding a mouse-like joystick.
+	var has_touch := DisplayServer.is_touchscreen_available()
+	touch_controls.visible = has_touch
+	touch_toggle_button.visible = false
 
 func initialize(p1_ref: Fighter, p2_ref: Fighter, cm_ref: CombatManager) -> void:
 	p1 = p1_ref
@@ -209,27 +213,15 @@ func _on_touch_toggle_pressed() -> void:
 	touch_controls.visible = not touch_controls.visible
 
 func _setup_touch_inputs() -> void:
-	var btn_left = $TouchControls/DPad/BtnLeft as Button
-	var btn_right = $TouchControls/DPad/BtnRight as Button
-	var btn_up = $TouchControls/DPad/BtnUp as Button
-	var btn_down = $TouchControls/DPad/BtnDown as Button
+	var joystick = $TouchControls/Joystick as FightJoystick
+	if joystick and p1:
+		joystick.direction_changed.connect(func(dir: Vector2, _octant: String):
+			p1.touch_dir = dir
+		)
 	
 	var btn_punch = $TouchControls/Actions/BtnPunch as Button
 	var btn_kick = $TouchControls/Actions/BtnKick as Button
 	var btn_block = $TouchControls/Actions/BtnBlock as Button
-	
-	if btn_left and p1:
-		btn_left.button_down.connect(func(): p1.touch_dir.x = -1.0)
-		btn_left.button_up.connect(func(): if p1.touch_dir.x < 0: p1.touch_dir.x = 0.0)
-	if btn_right and p1:
-		btn_right.button_down.connect(func(): p1.touch_dir.x = 1.0)
-		btn_right.button_up.connect(func(): if p1.touch_dir.x > 0: p1.touch_dir.x = 0.0)
-	if btn_up and p1:
-		btn_up.button_down.connect(func(): p1.touch_dir.y = -1.0)
-		btn_up.button_up.connect(func(): if p1.touch_dir.y < 0: p1.touch_dir.y = 0.0)
-	if btn_down and p1:
-		btn_down.button_down.connect(func(): p1.touch_dir.y = 1.0)
-		btn_down.button_up.connect(func(): if p1.touch_dir.y > 0: p1.touch_dir.y = 0.0)
 	
 	if btn_punch and p1:
 		btn_punch.button_down.connect(func(): p1.touch_punch = true)
