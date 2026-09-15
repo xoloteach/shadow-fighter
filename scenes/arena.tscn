@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://arena_scene_01"]
+
+[ext_resource type="Script" path="res://scripts/arena.gd" id="1_arena"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1600, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(60, 900)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceiling"]
+size = Vector2(1600, 60)
+
+[node name="Arena" type="Node2D"]
+script = ExtResource("1_arena")
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Floor" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(0, 590)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-610, 200)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="WallRight" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(610, 200)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Ceiling" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_ceiling")

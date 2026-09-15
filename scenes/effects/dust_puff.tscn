@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dust_puff_01"]
+
+[ext_resource type="Script" path="res://scripts/dust_puff.gd" id="1_dust"]
+
+[node name="DustPuff" type="Node2D"]
+script = ExtResource("1_dust")

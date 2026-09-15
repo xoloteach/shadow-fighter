@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="24" fill="#0d0e15"/>
+  <!-- Sunset glow -->
+  <circle cx="64" cy="64" r="50" fill="#e25822" opacity="0.8"/>
+  <circle cx="64" cy="64" r="42" fill="#ff9900" opacity="0.9"/>
+  <!-- Mountain silhouette -->
+  <polygon points="10,110 50,70 80,95 118,55 128,110" fill="#141120"/>
+  <!-- Ground -->
+  <rect x="0" y="105" width="128" height="23" fill="#07070a"/>
+  <!-- Silhouette martial artist in strike pose -->
+  <circle cx="62" cy="45" r="8" fill="#07070a"/>
+  <!-- Cyan eye glow -->
+  <ellipse cx="64" cy="45" rx="3" ry="1.2" fill="#00ffff"/>
+  <path d="M58,53 L66,53 L68,76 L56,76 Z" fill="#07070a"/>
+  <!-- Headband tail -->
+  <path d="M58,45 Q46,40 38,48 Q44,43 56,47" fill="#00e5ff"/>
+  <!-- Punching arm -->
+  <path d="M64,56 L82,54 L92,54" stroke="#07070a" stroke-width="5" stroke-linecap="round"/>
+  <!-- Guard arm -->
+  <path d="M58,58 L50,65 L56,70" stroke="#07070a" stroke-width="5" stroke-linecap="round"/>
+  <!-- Stance legs -->
+  <path d="M60,74 L46,92 L42,106" stroke="#07070a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M65,74 L78,90 L86,106" stroke="#07070a" stroke-width="6" stroke-linecap="round"/>
+</svg>

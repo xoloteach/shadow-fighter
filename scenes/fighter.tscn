@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://fighter_scene_01"]
+
+[ext_resource type="Script" path="res://scripts/fighter.gd" id="1_fighter"]
+[ext_resource type="Script" path="res://scripts/fighter_visuals.gd" id="2_visuals"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="3_hurtbox"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_hitbox"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 16.0
+height = 118.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_head"]
+radius = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_torso"]
+radius = 18.0
+height = 52.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_legs"]
+radius = 16.0
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hit"]
+radius = 24.0
+
+[node name="Fighter" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 33
+script = ExtResource("1_fighter")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -60)
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="Visuals" type="Node2D" parent="."]
+script = ExtResource("2_visuals")
+
+[node name="HurtboxHigh" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_hurtbox")
+zone = "high"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxHigh"]
+position = Vector2(0, -108)
+shape = SubResource("CircleShape2D_head")
+
+[node name="HurtboxMid" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_hurtbox")
+zone = "mid"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxMid"]
+position = Vector2(0, -68)
+shape = SubResource("CapsuleShape2D_torso")
+
+[node name="HurtboxLow" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_hurtbox")
+zone = "low"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxLow"]
+position = Vector2(0, -22)
+shape = SubResource("CapsuleShape2D_legs")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+script = ExtResource("4_hitbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_hit")
+disabled = true

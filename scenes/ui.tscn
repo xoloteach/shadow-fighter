@@ -1,0 +1,598 @@
+[gd_scene format=3 uid="uid://ui_scene_01"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1_trail"]
+bg_color = Color(0.85, 0.25, 0.2, 0.8)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1_bar"]
+bg_color = Color(0.1, 0.8, 0.9, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.22, 0.3, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2_trail"]
+bg_color = Color(0.7, 0.1, 0.1, 0.8)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2_bar"]
+bg_color = Color(0.95, 0.25, 0.35, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_timer"]
+bg_color = Color(0.06, 0.05, 0.09, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.65, 0.25, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 12.0
+content_margin_top = 4.0
+content_margin_right = 12.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_announcement"]
+bg_color = Color(0.05, 0.04, 0.08, 0.92)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9, 0.3, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 32.0
+content_margin_top = 16.0
+content_margin_right = 32.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.08, 0.07, 0.12, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.6, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 36.0
+content_margin_top = 28.0
+content_margin_right = 36.0
+content_margin_bottom = 28.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.18, 0.15, 0.26, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9, 0.7, 0.25, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.3, 0.25, 0.42, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.35, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_touch_btn"]
+bg_color = Color(0.12, 0.1, 0.18, 0.65)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.5, 0.7, 0.7)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_touch_action"]
+bg_color = Color(0.18, 0.12, 0.24, 0.7)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.4, 0.5, 0.8)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 18.0
+offset_right = -24.0
+offset_bottom = 74.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="P1Container" type="VBoxContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Header" type="HBoxContainer" parent="TopBar/P1Container"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="TopBar/P1Container/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "KAGE (SHADOW)"
+
+[node name="Spacer" type="Control" parent="TopBar/P1Container/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HpLabel" type="Label" parent="TopBar/P1Container/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "100 HP"
+
+[node name="HealthBar" type="ProgressBar" parent="TopBar/P1Container"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p1_bar")
+value = 100.0
+show_percentage = false
+
+[node name="DamageTrail" type="ProgressBar" parent="TopBar/P1Container/HealthBar"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p1_trail")
+value = 100.0
+show_percentage = false
+
+[node name="Rounds" type="HBoxContainer" parent="TopBar/P1Container"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Round1" type="ColorRect" parent="TopBar/P1Container/Rounds"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.25, 0.6)
+
+[node name="Round2" type="ColorRect" parent="TopBar/P1Container/Rounds"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.25, 0.6)
+
+[node name="TimerPanel" type="PanelContainer" parent="TopBar"]
+custom_minimum_size = Vector2(74, 52)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_timer")
+
+[node name="TimerLabel" type="Label" parent="TopBar/TimerPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.3, 1)
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2Container" type="VBoxContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Header" type="HBoxContainer" parent="TopBar/P2Container"]
+layout_mode = 2
+
+[node name="HpLabel" type="Label" parent="TopBar/P2Container/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.5, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "100 HP"
+
+[node name="Spacer" type="Control" parent="TopBar/P2Container/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="TopBar/P2Container/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.25, 0.35, 1)
+theme_override_font_sizes/font_size = 18
+text = "ONI (WRAITH)"
+
+[node name="HealthBar" type="ProgressBar" parent="TopBar/P2Container"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p2_bar")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="DamageTrail" type="ProgressBar" parent="TopBar/P2Container/HealthBar"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p2_trail")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Rounds" type="HBoxContainer" parent="TopBar/P2Container"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Round2" type="ColorRect" parent="TopBar/P2Container/Rounds"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.25, 0.6)
+
+[node name="Round1" type="ColorRect" parent="TopBar/P2Container/Rounds"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+color = Color(0.2, 0.2, 0.25, 0.6)
+
+[node name="TouchToggleBtn" type="Button" parent="TopBar"]
+custom_minimum_size = Vector2(40, 36)
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "Toggle On-Screen Touch Controls"
+text = "📱"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -120.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnnouncementPanel" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+pivot_offset = Vector2(120, 45)
+theme_override_styles/panel = SubResource("StyleBoxFlat_announcement")
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/AnnouncementPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="MainLabel" type="Label" parent="CenterContainer/AnnouncementPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 46
+text = "ROUND 1"
+horizontal_alignment = 1
+
+[node name="SubLabel" type="Label" parent="CenterContainer/AnnouncementPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.8, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "GET READY"
+horizontal_alignment = 1
+
+[node name="ComboPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 60.0
+offset_top = 130.0
+offset_right = 260.0
+offset_bottom = 220.0
+pivot_offset = Vector2(80, 40)
+mouse_filter = 2
+
+[node name="HitsLabel" type="Label" parent="ComboPanel"]
+layout_mode = 0
+offset_right = 65.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 46
+text = "3"
+
+[node name="TextLabel" type="Label" parent="ComboPanel"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 14.0
+offset_right = 230.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 22
+text = "HITS COMBO!"
+
+[node name="HelpBar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 180.0
+offset_top = -32.0
+offset_right = -180.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ControlsLabel" type="Label" parent="HelpBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.85, 0.85)
+theme_override_font_sizes/font_size = 13
+text = "[A/D or ←/→] Move  |  [W or Space] Jump  |  [S] Crouch  |  [J/Z] Punch  |  [K/X] Kick  |  [L/C/Shift] Block  |  [R] Restart"
+horizontal_alignment = 1
+
+[node name="TouchControls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DPad" type="Control" parent="TouchControls"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = -210.0
+offset_right = 246.0
+offset_bottom = -30.0
+grow_vertical = 0
+
+[node name="BtnLeft" type="Button" parent="TouchControls/DPad"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 60.0
+offset_right = 64.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_touch_btn")
+text = "◀"
+
+[node name="BtnRight" type="Button" parent="TouchControls/DPad"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 60.0
+offset_right = 204.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_touch_btn")
+text = "▶"
+
+[node name="BtnUp" type="Button" parent="TouchControls/DPad"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 0.0
+offset_right = 134.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_touch_btn")
+text = "▲"
+
+[node name="BtnDown" type="Button" parent="TouchControls/DPad"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 120.0
+offset_right = 134.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_touch_btn")
+text = "▼"
+
+[node name="Actions" type="Control" parent="TouchControls"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -210.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="BtnPunch" type="Button" parent="TouchControls/Actions"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 70.0
+offset_right = 90.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0.3, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_touch_action")
+text = "PUNCH\n[J]"
+
+[node name="BtnKick" type="Button" parent="TouchControls/Actions"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 10.0
+offset_right = 176.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(1, 0.4, 0.6, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_touch_action")
+text = "KICK\n[K]"
+
+[node name="BtnBlock" type="Button" parent="TouchControls/Actions"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 100.0
+offset_right = 186.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_touch_action")
+text = "BLOCK\n[L]"
+
+[node name="GameOverModal" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="GameOverModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.07, 0.75)
+
+[node name="Panel" type="PanelContainer" parent="GameOverModal"]
+custom_minimum_size = Vector2(380, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -170.0
+offset_right = 190.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBox" type="VBoxContainer" parent="GameOverModal/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="GameOverModal/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 40
+text = "VICTORY"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="GameOverModal/Panel/VBox"]
+layout_mode = 2
+
+[node name="StatsContainer" type="VBoxContainer" parent="GameOverModal/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RoundsLabel" type="Label" parent="GameOverModal/Panel/VBox/StatsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "Rounds: 2 - 0"
+horizontal_alignment = 1
+
+[node name="HitsLabel" type="Label" parent="GameOverModal/Panel/VBox/StatsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+text = "Total Hits Landed: 14"
+horizontal_alignment = 1
+
+[node name="ComboLabel" type="Label" parent="GameOverModal/Panel/VBox/StatsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+text = "Max Combo: 3 Hits"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="GameOverModal/Panel/VBox/StatsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+text = "Match Time: 28s"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverModal/Panel/VBox"]
+custom_minimum_size = Vector2(220, 52)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_hover")
+text = "PLAY AGAIN [ENTER / R]"
