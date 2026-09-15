@@ -1,0 +1,21 @@
+{
+  "animation": "heavy_hit",
+  "times": [
+    0.0,
+    0.05,
+    0.11,
+    0.18,
+    0.24,
+    0.28
+  ],
+  "duration": 0.28,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "heavy": true
+  }
+}

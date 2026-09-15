@@ -1,0 +1,23 @@
+{
+  "animation": "walk_backward",
+  "times": [
+    0.0,
+    0.075,
+    0.15,
+    0.22499999999999998,
+    0.3,
+    0.375,
+    0.44999999999999996,
+    0.525
+  ],
+  "duration": 0.6,
+  "loop": true,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "movement_speed": -175.0
+  }
+}

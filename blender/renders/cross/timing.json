@@ -1,0 +1,40 @@
+{
+  "animation": "cross",
+  "times": [
+    0.0,
+    0.04,
+    0.08,
+    0.14,
+    0.2,
+    0.28
+  ],
+  "duration": 0.28,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "attack_state": "punch_2",
+    "startup_start": 0.0,
+    "hitbox_on": 0.08,
+    "hitbox_off": 0.18,
+    "impact_frame": 2,
+    "movement_impulse": 120.0,
+    "sound_event": "whoosh_light",
+    "hit_sound": "hit_light",
+    "damage": 12.0,
+    "chip_damage": 2.0,
+    "knockback": [
+      250.0,
+      -70.0
+    ],
+    "hit_stun": 0.26,
+    "attack_type": "mid",
+    "trail_event": true,
+    "recovery_start": 0.18,
+    "animation_end": 0.28,
+    "can_combo_cancel": true
+  }
+}

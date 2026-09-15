@@ -1,0 +1,40 @@
+{
+  "animation": "side_kick",
+  "times": [
+    0.0,
+    0.05,
+    0.1,
+    0.17,
+    0.25,
+    0.34
+  ],
+  "duration": 0.34,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "attack_state": "kick_1",
+    "startup_start": 0.0,
+    "hitbox_on": 0.1,
+    "hitbox_off": 0.22,
+    "impact_frame": 2,
+    "movement_impulse": 110.0,
+    "sound_event": "whoosh_heavy",
+    "hit_sound": "hit_light",
+    "damage": 13.0,
+    "chip_damage": 2.5,
+    "knockback": [
+      280.0,
+      -80.0
+    ],
+    "hit_stun": 0.28,
+    "attack_type": "mid",
+    "trail_event": true,
+    "recovery_start": 0.22,
+    "animation_end": 0.34,
+    "can_combo_cancel": true
+  }
+}

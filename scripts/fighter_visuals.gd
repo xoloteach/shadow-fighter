@@ -134,12 +134,93 @@ func update_visuals(delta: float, fighter: CharacterBody2D) -> void:
 	if is_player and use_blender_sprites:
 		var anim_name = ""
 		var current_time = 0.0
-		if current_pose == "idle":
-			anim_name = "idle"
-			current_time = fmod(pose_time, 1.0)
-		elif current_pose == "punch_1":
-			anim_name = "jab"
-			current_time = fighter.state_timer
+		
+		match current_pose:
+			"idle":
+				anim_name = "idle"
+				current_time = fmod(pose_time, 1.0)
+			"walk_forward":
+				anim_name = "walk_forward"
+				current_time = fmod(walk_cycle / 9.0 * 0.60, 0.60)
+			"walk_backward":
+				anim_name = "walk_backward"
+				current_time = fmod(walk_cycle / 9.0 * 0.60, 0.60)
+			"crouch":
+				anim_name = "crouch"
+				current_time = minf(fighter.state_timer, 0.19)
+			"jump":
+				if fighter.state_timer < 0.08:
+					anim_name = "jump_start"
+					current_time = fighter.state_timer
+				elif fighter.velocity.y < 0.0:
+					anim_name = "jump_air"
+					current_time = fmod(fighter.state_timer, 0.25)
+				else:
+					anim_name = "fall"
+					current_time = fmod(fighter.state_timer, 0.25)
+			"land":
+				anim_name = "land"
+				current_time = fighter.state_timer
+			"punch_1":
+				anim_name = "jab"
+				current_time = fighter.state_timer
+			"punch_2":
+				anim_name = "cross"
+				current_time = fighter.state_timer
+			"punch_3":
+				anim_name = "hook"
+				current_time = fighter.state_timer
+			"crouch_punch":
+				anim_name = "uppercut"
+				current_time = fighter.state_timer
+			"kick_1":
+				anim_name = "side_kick"
+				current_time = fighter.state_timer
+			"kick_2":
+				anim_name = "roundhouse_kick"
+				current_time = fighter.state_timer
+			"crouch_kick":
+				anim_name = "low_kick"
+				current_time = fighter.state_timer
+			"jump_punch":
+				anim_name = "hook"
+				current_time = fighter.state_timer
+			"jump_kick":
+				anim_name = "side_kick"
+				current_time = fighter.state_timer
+			"block":
+				if fighter.input_dir.y > 0.3:
+					anim_name = "block_low"
+				elif fighter.opponent and fighter.opponent.current_attack_name in ["punch_3", "kick_2", "jump_punch"]:
+					anim_name = "block_high"
+				else:
+					anim_name = "block_mid"
+				current_time = minf(fighter.state_timer, 0.19)
+			"dodge":
+				anim_name = "dodge_back"
+				current_time = fighter.state_timer
+			"hit_stun":
+				if fighter.get("last_hit_zone") == "high":
+					anim_name = "hit_head"
+				elif fighter.get("last_hit_zone") == "low":
+					anim_name = "hit_leg"
+				elif fighter.get("last_hit_heavy"):
+					anim_name = "heavy_hit"
+				else:
+					anim_name = "hit_body"
+				current_time = fighter.state_timer
+			"knockdown":
+				anim_name = "knockdown"
+				current_time = minf(fighter.state_timer, 0.49)
+			"get_up":
+				anim_name = "get_up"
+				current_time = minf(fighter.state_timer, 0.44)
+			"dead":
+				anim_name = "knockdown"
+				current_time = 0.49
+			"victory":
+				anim_name = "idle"
+				current_time = fmod(pose_time, 1.0)
 		
 		if anim_name != "" and blender_library.has(anim_name) and blender_textures.has(anim_name):
 			var anim_info = blender_library[anim_name]
@@ -171,6 +252,7 @@ func update_visuals(delta: float, fighter: CharacterBody2D) -> void:
 					blender_sprite.position = Vector2(p_x * gscale, -p_y * gscale)
 				
 				is_rendering_blender_sprite = true
+
 	
 	if not is_rendering_blender_sprite and blender_sprite:
 		blender_sprite.visible = false

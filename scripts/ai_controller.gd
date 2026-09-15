@@ -47,11 +47,23 @@ func _make_decision() -> void:
 	# Check if player is currently attacking
 	var opp_attacking = opponent._is_attacking_state()
 	
+	# Anti-air reaction: if opponent is jumping towards AI in close/mid range, execute anti-air uppercut!
+	if not opponent.is_on_floor() and abs_dist < 160.0 and fighter.is_on_floor():
+		if randf() < 0.65:
+			fighter.input_dir = Vector2(0.0, 1.0) # crouch
+			fighter.input_punch_pressed = true    # uppercut anti-air
+			return
+	
 	# Defensive reaction logic
 	if opp_attacking and abs_dist < 150.0:
 		var block_chance = 0.65 if not is_low_hp else 0.85
 		if randf() < block_chance:
-			fighter.input_dir = Vector2.ZERO
+			# Match guard to attack type: crouch if opponent is sweeping!
+			var opp_atk = opponent.current_attack_name
+			if opp_atk == "crouch_kick":
+				fighter.input_dir = Vector2(0.0, 1.0) # crouch block
+			else:
+				fighter.input_dir = Vector2.ZERO
 			fighter.input_block_held = true
 			fighter.input_punch_pressed = false
 			fighter.input_kick_pressed = false
@@ -121,12 +133,17 @@ func _handle_ai_combo_chaining() -> void:
 	match fighter.current_attack_name:
 		"punch_1":
 			if randf() < 0.75:
-				fighter.input_punch_pressed = true
-			elif randf() < 0.4:
-				fighter.input_kick_pressed = true
+				fighter.input_punch_pressed = true # jab -> cross
+			elif randf() < 0.45:
+				fighter.input_kick_pressed = true  # jab -> roundhouse
 		"punch_2":
-			if randf() < 0.70:
-				fighter.input_punch_pressed = true
+			if randf() < 0.65:
+				fighter.input_punch_pressed = true # cross -> hook
+			elif randf() < 0.50:
+				fighter.input_kick_pressed = true  # cross -> side kick
+		"crouch_kick":
+			if randf() < 0.60:
+				fighter.input_punch_pressed = true # low sweep -> cross
 		"kick_1":
 			if randf() < 0.70:
-				fighter.input_kick_pressed = true
+				fighter.input_kick_pressed = true  # side kick -> roundhouse

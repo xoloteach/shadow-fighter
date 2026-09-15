@@ -1,0 +1,20 @@
+{
+  "animation": "hit_body",
+  "times": [
+    0.0,
+    0.04,
+    0.09,
+    0.15,
+    0.22
+  ],
+  "duration": 0.22,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "hit_zone": "mid"
+  }
+}

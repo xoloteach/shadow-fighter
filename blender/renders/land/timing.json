@@ -1,0 +1,19 @@
+{
+  "animation": "land",
+  "times": [
+    0.0,
+    0.04,
+    0.08,
+    0.12
+  ],
+  "duration": 0.12,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "sound_event": "land"
+  }
+}

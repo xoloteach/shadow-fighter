@@ -42,6 +42,10 @@ var touch_punch: bool = false
 var touch_kick: bool = false
 var touch_block: bool = false
 
+# Hit reaction tracking for animations
+var last_hit_zone: String = "mid"
+var last_hit_heavy: bool = false
+
 # Combat tracking
 var combo_count: int = 0
 var combo_reset_timer: float = 0.0
@@ -136,14 +140,20 @@ func _physics_process(delta: float) -> void:
 			_process_crouch_state(delta)
 		"jump":
 			_process_jump_state(delta)
+		"land":
+			_process_land_state(delta)
 		"block":
 			_process_block_state(delta)
+		"dodge":
+			_process_dodge_state(delta)
 		"punch_1", "punch_2", "punch_3", "kick_1", "kick_2", "crouch_punch", "crouch_kick", "jump_punch", "jump_kick":
 			_process_attack_state(delta)
 		"hit_stun":
 			_process_hit_stun_state(delta)
 		"knockdown":
 			_process_knockdown_state(delta)
+		"get_up":
+			_process_get_up_state(delta)
 		"dead":
 			_process_dead_state(delta)
 		"victory":
@@ -285,8 +295,21 @@ func _process_jump_state(delta: float) -> void:
 		return
 	
 	# Land on floor
-	if is_on_floor() and state_timer > 0.1:
+	if is_on_floor() and state_timer > 0.08:
 		_play_sound("land", 1.0, 0.5)
+		_change_state("land")
+
+func _process_land_state(delta: float) -> void:
+	velocity.x = move_toward(velocity.x, 0.0, 1400.0 * delta)
+	if _check_attack_inputs():
+		return
+	if state_timer >= 0.12:
+		_change_state("idle")
+
+func _process_dodge_state(delta: float) -> void:
+	velocity.x = move_toward(velocity.x, 0.0, 900.0 * delta)
+	if state_timer >= 0.25:
+		is_invulnerable = false
 		_change_state("idle")
 
 func _process_block_state(delta: float) -> void:
@@ -341,8 +364,12 @@ func _process_hit_stun_state(delta: float) -> void:
 
 func _process_knockdown_state(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, 0.0, 600.0 * delta)
-	# Wake up after 0.75 seconds
-	if state_timer >= 0.75:
+	if state_timer >= 0.50:
+		_change_state("get_up")
+
+func _process_get_up_state(delta: float) -> void:
+	velocity.x = move_toward(velocity.x, 0.0, 600.0 * delta)
+	if state_timer >= 0.45:
 		is_invulnerable = false
 		_change_state("idle")
 
@@ -363,23 +390,27 @@ func _check_attack_inputs() -> bool:
 
 func _check_combo_chain() -> bool:
 	match current_attack_name:
-		"punch_1":
+		"punch_1": # jab
 			if input_punch_pressed:
-				_start_attack("punch_2")
+				_start_attack("punch_2") # jab -> cross
 				return true
 			if input_kick_pressed:
-				_start_attack("kick_1")
+				_start_attack("kick_2") # jab -> roundhouse
 				return true
-		"punch_2":
+		"punch_2": # cross
 			if input_punch_pressed:
-				_start_attack("punch_3")
+				_start_attack("punch_3") # cross -> hook
 				return true
 			if input_kick_pressed:
-				_start_attack("kick_2")
+				_start_attack("kick_1") # cross -> side kick
 				return true
-		"kick_1":
+		"crouch_kick": # low kick
+			if input_punch_pressed:
+				_start_attack("punch_2") # low kick -> cross
+				return true
+		"kick_1": # side kick
 			if input_kick_pressed:
-				_start_attack("kick_2")
+				_start_attack("kick_2") # side kick -> roundhouse
 				return true
 	return false
 
@@ -480,21 +511,22 @@ func _start_attack(attack_name: String) -> void:
 			velocity.x = 130.0 * facing_direction
 			
 		"crouch_punch":
-			attack_duration = 0.24
-			attack_startup = 0.05
-			attack_active_start = 0.06
-			attack_active_end = 0.16
+			attack_duration = 0.32
+			attack_startup = 0.08
+			attack_active_start = 0.11
+			attack_active_end = 0.22
 			can_combo_cancel = false
 			
-			hitbox.damage = 7.0
-			hitbox.chip_damage = 1.0
-			hitbox.knockback = Vector2(140 * facing_direction, -30)
-			hitbox.hit_stun = 0.20
-			hitbox.attack_type = "low"
-			hitbox.hit_sound = "hit_light"
+			hitbox.damage = 18.0
+			hitbox.chip_damage = 3.5
+			hitbox.knockback = Vector2(200 * facing_direction, -220)
+			hitbox.hit_stun = 0.38
+			hitbox.attack_type = "mid"
+			hitbox.hit_sound = "hit_heavy"
 			hitbox.is_sweep = false
-			hitbox.heavy_hit = false
-			_play_sound("whoosh_light", 1.3, 0.6)
+			hitbox.heavy_hit = true
+			_play_sound("whoosh_heavy", 1.1, 0.8)
+			velocity.x = 100.0 * facing_direction
 			
 		"crouch_kick":
 			attack_duration = 0.38
@@ -562,17 +594,17 @@ func _position_hitbox_for_attack(attack_name: String) -> void:
 			hitbox.position = Vector2(54 * facing_direction, -86)
 			shape.radius = 24.0
 		"punch_3":
-			hitbox.position = Vector2(58 * facing_direction, -92)
-			shape.radius = 28.0
+			hitbox.position = Vector2(46 * facing_direction, -96)
+			shape.radius = 26.0
 		"kick_1":
-			hitbox.position = Vector2(56 * facing_direction, -68)
+			hitbox.position = Vector2(58 * facing_direction, -70)
 			shape.radius = 26.0
 		"kick_2":
-			hitbox.position = Vector2(62 * facing_direction, -88)
+			hitbox.position = Vector2(56 * facing_direction, -96)
 			shape.radius = 28.0
 		"crouch_punch":
-			hitbox.position = Vector2(46 * facing_direction, -44)
-			shape.radius = 22.0
+			hitbox.position = Vector2(34 * facing_direction, -96)
+			shape.radius = 26.0
 		"crouch_kick":
 			hitbox.position = Vector2(58 * facing_direction, -10)
 			shape.radius = 24.0
@@ -617,6 +649,8 @@ func receive_hit(h: Hitbox, hit_zone: String) -> bool:
 	
 	if is_blocked:
 		# Blocked hit
+		last_hit_zone = hit_zone
+		last_hit_heavy = false
 		var dmg = h.chip_damage
 		current_health = maxf(current_health - dmg, 1.0) # cannot die from chip damage
 		health_changed.emit(current_health, max_health)
@@ -629,6 +663,8 @@ func receive_hit(h: Hitbox, hit_zone: String) -> bool:
 		return true
 	else:
 		# Clean hit
+		last_hit_zone = hit_zone
+		last_hit_heavy = h.heavy_hit
 		var dmg = h.damage
 		current_health = maxf(current_health - dmg, 0.0)
 		health_changed.emit(current_health, max_health)

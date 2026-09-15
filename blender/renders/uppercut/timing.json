@@ -1,0 +1,41 @@
+{
+  "animation": "uppercut",
+  "times": [
+    0.0,
+    0.05,
+    0.11,
+    0.17,
+    0.24,
+    0.32
+  ],
+  "duration": 0.32,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "attack_state": "crouch_punch",
+    "startup_start": 0.0,
+    "hitbox_on": 0.11,
+    "hitbox_off": 0.22,
+    "impact_frame": 2,
+    "movement_impulse": 100.0,
+    "sound_event": "whoosh_heavy",
+    "hit_sound": "hit_heavy",
+    "damage": 18.0,
+    "chip_damage": 3.5,
+    "knockback": [
+      200.0,
+      -220.0
+    ],
+    "hit_stun": 0.38,
+    "attack_type": "mid",
+    "heavy_hit": true,
+    "trail_event": true,
+    "recovery_start": 0.22,
+    "animation_end": 0.32,
+    "can_combo_cancel": false
+  }
+}

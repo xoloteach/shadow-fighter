@@ -1,0 +1,17 @@
+{
+  "animation": "crouch",
+  "times": [
+    0.0,
+    0.06,
+    0.13,
+    0.2
+  ],
+  "duration": 0.2,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {}
+}

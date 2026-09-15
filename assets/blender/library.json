@@ -1,4 +1,826 @@
 {
+  "block_high": {
+    "animation": "block_high",
+    "times": [
+      0.0,
+      0.06,
+      0.13,
+      0.2
+    ],
+    "duration": 0.2,
+    "loop": false,
+    "pivot": [
+      46,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "block_zone": "high",
+      "sound_event": "block"
+    },
+    "texture": "res://assets/blender/block_high.png",
+    "rects": [
+      [
+        2,
+        2,
+        110,
+        213
+      ],
+      [
+        116,
+        2,
+        110,
+        213
+      ],
+      [
+        230,
+        2,
+        110,
+        213
+      ],
+      [
+        344,
+        2,
+        110,
+        213
+      ]
+    ],
+    "atlas_size": [
+      912,
+      217
+    ],
+    "frame_box": [
+      110,
+      213
+    ]
+  },
+  "block_low": {
+    "animation": "block_low",
+    "times": [
+      0.0,
+      0.06,
+      0.13,
+      0.2
+    ],
+    "duration": 0.2,
+    "loop": false,
+    "pivot": [
+      63,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "block_zone": "low",
+      "sound_event": "block"
+    },
+    "texture": "res://assets/blender/block_low.png",
+    "rects": [
+      [
+        2,
+        2,
+        137,
+        220
+      ],
+      [
+        143,
+        2,
+        137,
+        220
+      ],
+      [
+        284,
+        2,
+        137,
+        220
+      ],
+      [
+        425,
+        2,
+        137,
+        220
+      ]
+    ],
+    "atlas_size": [
+      1128,
+      224
+    ],
+    "frame_box": [
+      137,
+      220
+    ]
+  },
+  "block_mid": {
+    "animation": "block_mid",
+    "times": [
+      0.0,
+      0.06,
+      0.13,
+      0.2
+    ],
+    "duration": 0.2,
+    "loop": false,
+    "pivot": [
+      46,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "block_zone": "mid",
+      "sound_event": "block"
+    },
+    "texture": "res://assets/blender/block_mid.png",
+    "rects": [
+      [
+        2,
+        2,
+        110,
+        213
+      ],
+      [
+        116,
+        2,
+        110,
+        213
+      ],
+      [
+        230,
+        2,
+        110,
+        213
+      ],
+      [
+        344,
+        2,
+        110,
+        213
+      ]
+    ],
+    "atlas_size": [
+      912,
+      217
+    ],
+    "frame_box": [
+      110,
+      213
+    ]
+  },
+  "cross": {
+    "animation": "cross",
+    "times": [
+      0.0,
+      0.04,
+      0.08,
+      0.14,
+      0.2,
+      0.28
+    ],
+    "duration": 0.28,
+    "loop": false,
+    "pivot": [
+      46,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "attack_state": "punch_2",
+      "startup_start": 0.0,
+      "hitbox_on": 0.08,
+      "hitbox_off": 0.18,
+      "impact_frame": 2,
+      "movement_impulse": 120.0,
+      "sound_event": "whoosh_light",
+      "hit_sound": "hit_light",
+      "damage": 12.0,
+      "chip_damage": 2.0,
+      "knockback": [
+        250.0,
+        -70.0
+      ],
+      "hit_stun": 0.26,
+      "attack_type": "mid",
+      "trail_event": true,
+      "recovery_start": 0.18,
+      "animation_end": 0.28,
+      "can_combo_cancel": true
+    },
+    "texture": "res://assets/blender/cross.png",
+    "rects": [
+      [
+        2,
+        2,
+        129,
+        215
+      ],
+      [
+        135,
+        2,
+        129,
+        215
+      ],
+      [
+        268,
+        2,
+        129,
+        215
+      ],
+      [
+        401,
+        2,
+        129,
+        215
+      ],
+      [
+        534,
+        2,
+        129,
+        215
+      ],
+      [
+        667,
+        2,
+        129,
+        215
+      ]
+    ],
+    "atlas_size": [
+      1064,
+      219
+    ],
+    "frame_box": [
+      129,
+      215
+    ]
+  },
+  "crouch": {
+    "animation": "crouch",
+    "times": [
+      0.0,
+      0.06,
+      0.13,
+      0.2
+    ],
+    "duration": 0.2,
+    "loop": false,
+    "pivot": [
+      62,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {},
+    "texture": "res://assets/blender/crouch.png",
+    "rects": [
+      [
+        2,
+        2,
+        134,
+        221
+      ],
+      [
+        140,
+        2,
+        134,
+        221
+      ],
+      [
+        278,
+        2,
+        134,
+        221
+      ],
+      [
+        416,
+        2,
+        134,
+        221
+      ]
+    ],
+    "atlas_size": [
+      1104,
+      225
+    ],
+    "frame_box": [
+      134,
+      221
+    ]
+  },
+  "dodge_back": {
+    "animation": "dodge_back",
+    "times": [
+      0.0,
+      0.06,
+      0.12,
+      0.18,
+      0.25
+    ],
+    "duration": 0.25,
+    "loop": false,
+    "pivot": [
+      63,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "movement_impulse": -180.0
+    },
+    "texture": "res://assets/blender/dodge_back.png",
+    "rects": [
+      [
+        2,
+        2,
+        127,
+        213
+      ],
+      [
+        133,
+        2,
+        127,
+        213
+      ],
+      [
+        264,
+        2,
+        127,
+        213
+      ],
+      [
+        395,
+        2,
+        127,
+        213
+      ],
+      [
+        526,
+        2,
+        127,
+        213
+      ]
+    ],
+    "atlas_size": [
+      1048,
+      217
+    ],
+    "frame_box": [
+      127,
+      213
+    ]
+  },
+  "fall": {
+    "animation": "fall",
+    "times": [
+      0.0,
+      0.08,
+      0.16,
+      0.25
+    ],
+    "duration": 0.25,
+    "loop": false,
+    "pivot": [
+      58,
+      205
+    ],
+    "game_scale": 0.625,
+    "events": {},
+    "texture": "res://assets/blender/fall.png",
+    "rects": [
+      [
+        2,
+        2,
+        128,
+        207
+      ],
+      [
+        134,
+        2,
+        128,
+        207
+      ],
+      [
+        266,
+        2,
+        128,
+        207
+      ],
+      [
+        398,
+        2,
+        128,
+        207
+      ]
+    ],
+    "atlas_size": [
+      1056,
+      211
+    ],
+    "frame_box": [
+      128,
+      207
+    ]
+  },
+  "get_up": {
+    "animation": "get_up",
+    "times": [
+      0.0,
+      0.09,
+      0.18,
+      0.27,
+      0.36,
+      0.45
+    ],
+    "duration": 0.45,
+    "loop": false,
+    "pivot": [
+      128,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {},
+    "texture": "res://assets/blender/get_up.png",
+    "rects": [
+      [
+        2,
+        2,
+        207,
+        230
+      ],
+      [
+        213,
+        2,
+        207,
+        230
+      ],
+      [
+        424,
+        2,
+        207,
+        230
+      ],
+      [
+        635,
+        2,
+        207,
+        230
+      ],
+      [
+        846,
+        2,
+        207,
+        230
+      ],
+      [
+        1057,
+        2,
+        207,
+        230
+      ]
+    ],
+    "atlas_size": [
+      1688,
+      234
+    ],
+    "frame_box": [
+      207,
+      230
+    ]
+  },
+  "heavy_hit": {
+    "animation": "heavy_hit",
+    "times": [
+      0.0,
+      0.05,
+      0.11,
+      0.18,
+      0.24,
+      0.28
+    ],
+    "duration": 0.28,
+    "loop": false,
+    "pivot": [
+      77,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "heavy": true
+    },
+    "texture": "res://assets/blender/heavy_hit.png",
+    "rects": [
+      [
+        2,
+        2,
+        141,
+        213
+      ],
+      [
+        147,
+        2,
+        141,
+        213
+      ],
+      [
+        292,
+        2,
+        141,
+        213
+      ],
+      [
+        437,
+        2,
+        141,
+        213
+      ],
+      [
+        582,
+        2,
+        141,
+        213
+      ],
+      [
+        727,
+        2,
+        141,
+        213
+      ]
+    ],
+    "atlas_size": [
+      1160,
+      217
+    ],
+    "frame_box": [
+      141,
+      213
+    ]
+  },
+  "hit_body": {
+    "animation": "hit_body",
+    "times": [
+      0.0,
+      0.04,
+      0.09,
+      0.15,
+      0.22
+    ],
+    "duration": 0.22,
+    "loop": false,
+    "pivot": [
+      65,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "hit_zone": "mid"
+    },
+    "texture": "res://assets/blender/hit_body.png",
+    "rects": [
+      [
+        2,
+        2,
+        129,
+        213
+      ],
+      [
+        135,
+        2,
+        129,
+        213
+      ],
+      [
+        268,
+        2,
+        129,
+        213
+      ],
+      [
+        401,
+        2,
+        129,
+        213
+      ],
+      [
+        534,
+        2,
+        129,
+        213
+      ]
+    ],
+    "atlas_size": [
+      1064,
+      217
+    ],
+    "frame_box": [
+      129,
+      213
+    ]
+  },
+  "hit_head": {
+    "animation": "hit_head",
+    "times": [
+      0.0,
+      0.04,
+      0.09,
+      0.15,
+      0.22
+    ],
+    "duration": 0.22,
+    "loop": false,
+    "pivot": [
+      54,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "hit_zone": "high"
+    },
+    "texture": "res://assets/blender/hit_head.png",
+    "rects": [
+      [
+        2,
+        2,
+        118,
+        213
+      ],
+      [
+        124,
+        2,
+        118,
+        213
+      ],
+      [
+        246,
+        2,
+        118,
+        213
+      ],
+      [
+        368,
+        2,
+        118,
+        213
+      ],
+      [
+        490,
+        2,
+        118,
+        213
+      ]
+    ],
+    "atlas_size": [
+      976,
+      217
+    ],
+    "frame_box": [
+      118,
+      213
+    ]
+  },
+  "hit_leg": {
+    "animation": "hit_leg",
+    "times": [
+      0.0,
+      0.04,
+      0.08,
+      0.14,
+      0.2
+    ],
+    "duration": 0.2,
+    "loop": false,
+    "pivot": [
+      68,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "hit_zone": "low"
+    },
+    "texture": "res://assets/blender/hit_leg.png",
+    "rects": [
+      [
+        2,
+        2,
+        132,
+        214
+      ],
+      [
+        138,
+        2,
+        132,
+        214
+      ],
+      [
+        274,
+        2,
+        132,
+        214
+      ],
+      [
+        410,
+        2,
+        132,
+        214
+      ],
+      [
+        546,
+        2,
+        132,
+        214
+      ]
+    ],
+    "atlas_size": [
+      1088,
+      218
+    ],
+    "frame_box": [
+      132,
+      214
+    ]
+  },
+  "hook": {
+    "animation": "hook",
+    "times": [
+      0.0,
+      0.05,
+      0.1,
+      0.16,
+      0.22,
+      0.3
+    ],
+    "duration": 0.3,
+    "loop": false,
+    "pivot": [
+      50,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "attack_state": "punch_3",
+      "startup_start": 0.0,
+      "hitbox_on": 0.1,
+      "hitbox_off": 0.2,
+      "impact_frame": 2,
+      "movement_impulse": 140.0,
+      "sound_event": "whoosh_heavy",
+      "hit_sound": "hit_heavy",
+      "damage": 16.0,
+      "chip_damage": 3.0,
+      "knockback": [
+        340.0,
+        -130.0
+      ],
+      "hit_stun": 0.34,
+      "attack_type": "high",
+      "heavy_hit": true,
+      "trail_event": true,
+      "recovery_start": 0.2,
+      "animation_end": 0.3,
+      "can_combo_cancel": false
+    },
+    "texture": "res://assets/blender/hook.png",
+    "rects": [
+      [
+        2,
+        2,
+        141,
+        215
+      ],
+      [
+        147,
+        2,
+        141,
+        215
+      ],
+      [
+        292,
+        2,
+        141,
+        215
+      ],
+      [
+        437,
+        2,
+        141,
+        215
+      ],
+      [
+        582,
+        2,
+        141,
+        215
+      ],
+      [
+        727,
+        2,
+        141,
+        215
+      ]
+    ],
+    "atlas_size": [
+      1160,
+      219
+    ],
+    "frame_box": [
+      141,
+      215
+    ]
+  },
   "idle": {
     "animation": "idle",
     "times": [
@@ -22,180 +844,956 @@
     "duration": 1.0,
     "loop": true,
     "pivot": [
-      45,
-      207
+      47,
+      209
     ],
     "game_scale": 0.625,
-    "combat": {},
+    "events": {},
     "texture": "res://assets/blender/idle.png",
     "rects": [
       [
         2,
         2,
-        107,
-        212
+        111,
+        216
       ],
       [
-        113,
+        117,
         2,
-        107,
-        212
+        111,
+        216
       ],
       [
-        224,
+        232,
         2,
-        107,
-        212
+        111,
+        216
       ],
       [
-        335,
+        347,
         2,
-        107,
-        212
+        111,
+        216
       ],
       [
-        446,
+        462,
         2,
-        107,
-        212
+        111,
+        216
       ],
       [
-        557,
+        577,
         2,
-        107,
-        212
+        111,
+        216
       ],
       [
-        668,
+        692,
         2,
-        107,
-        212
+        111,
+        216
       ],
       [
-        779,
+        807,
         2,
-        107,
-        212
+        111,
+        216
       ],
       [
         2,
-        218,
-        107,
-        212
+        222,
+        111,
+        216
       ],
       [
-        113,
-        218,
-        107,
-        212
+        117,
+        222,
+        111,
+        216
       ],
       [
-        224,
-        218,
-        107,
-        212
+        232,
+        222,
+        111,
+        216
       ],
       [
-        335,
-        218,
-        107,
-        212
+        347,
+        222,
+        111,
+        216
       ],
       [
-        446,
-        218,
-        107,
-        212
+        462,
+        222,
+        111,
+        216
       ],
       [
-        557,
-        218,
-        107,
-        212
+        577,
+        222,
+        111,
+        216
       ],
       [
-        668,
-        218,
-        107,
-        212
+        692,
+        222,
+        111,
+        216
       ],
       [
-        779,
-        218,
-        107,
-        212
+        807,
+        222,
+        111,
+        216
       ]
     ],
     "atlas_size": [
-      888,
-      432
+      920,
+      440
+    ],
+    "frame_box": [
+      111,
+      216
     ]
   },
   "jab": {
     "animation": "jab",
     "times": [
-      0,
+      0.0,
       0.03,
       0.06,
       0.12,
-      0.16666666666666666,
+      0.1667,
       0.2
     ],
     "duration": 0.24,
     "loop": false,
     "pivot": [
-      44,
-      206
+      46,
+      208
     ],
     "game_scale": 0.625,
-    "combat": {
-      "state": "punch_1",
-      "startup": 0.06,
-      "active_end": 0.16,
-      "recovery_end": 0.24
+    "events": {
+      "attack_state": "punch_1",
+      "startup_start": 0.0,
+      "hitbox_on": 0.06,
+      "hitbox_off": 0.16,
+      "impact_frame": 2,
+      "movement_impulse": 80.0,
+      "sound_event": "whoosh_light",
+      "hit_sound": "hit_light",
+      "damage": 8.0,
+      "chip_damage": 1.5,
+      "knockback": [
+        170.0,
+        -50.0
+      ],
+      "hit_stun": 0.22,
+      "attack_type": "mid",
+      "trail_event": true,
+      "recovery_start": 0.16,
+      "animation_end": 0.24,
+      "can_combo_cancel": true
     },
     "texture": "res://assets/blender/jab.png",
     "rects": [
       [
         2,
         2,
-        132,
-        210
+        136,
+        214
       ],
       [
-        138,
+        142,
         2,
-        132,
-        210
+        136,
+        214
       ],
       [
-        274,
+        282,
         2,
-        132,
-        210
+        136,
+        214
       ],
       [
-        410,
+        422,
         2,
-        132,
-        210
+        136,
+        214
       ],
       [
-        546,
+        562,
         2,
-        132,
-        210
+        136,
+        214
       ],
       [
-        682,
+        702,
         2,
-        132,
-        210
+        136,
+        214
       ]
     ],
     "atlas_size": [
-      1088,
+      1120,
+      218
+    ],
+    "frame_box": [
+      136,
       214
+    ]
+  },
+  "jump_air": {
+    "animation": "jump_air",
+    "times": [
+      0.0,
+      0.08,
+      0.16,
+      0.25
+    ],
+    "duration": 0.25,
+    "loop": false,
+    "pivot": [
+      59,
+      216
+    ],
+    "game_scale": 0.625,
+    "events": {},
+    "texture": "res://assets/blender/jump_air.png",
+    "rects": [
+      [
+        2,
+        2,
+        131,
+        222
+      ],
+      [
+        137,
+        2,
+        131,
+        222
+      ],
+      [
+        272,
+        2,
+        131,
+        222
+      ],
+      [
+        407,
+        2,
+        131,
+        222
+      ]
+    ],
+    "atlas_size": [
+      1080,
+      226
+    ],
+    "frame_box": [
+      131,
+      222
+    ]
+  },
+  "jump_start": {
+    "animation": "jump_start",
+    "times": [
+      0.0,
+      0.06,
+      0.12
+    ],
+    "duration": 0.12,
+    "loop": false,
+    "pivot": [
+      61,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "sound_event": "jump"
+    },
+    "texture": "res://assets/blender/jump_start.png",
+    "rects": [
+      [
+        2,
+        2,
+        125,
+        220
+      ],
+      [
+        131,
+        2,
+        125,
+        220
+      ],
+      [
+        260,
+        2,
+        125,
+        220
+      ]
+    ],
+    "atlas_size": [
+      1032,
+      224
+    ],
+    "frame_box": [
+      125,
+      220
+    ]
+  },
+  "knockdown": {
+    "animation": "knockdown",
+    "times": [
+      0.0,
+      0.08,
+      0.16,
+      0.25,
+      0.35,
+      0.45,
+      0.5
+    ],
+    "duration": 0.5,
+    "loop": false,
+    "pivot": [
+      128,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "sound_event": "ko_impact"
+    },
+    "texture": "res://assets/blender/knockdown.png",
+    "rects": [
+      [
+        2,
+        2,
+        207,
+        229
+      ],
+      [
+        213,
+        2,
+        207,
+        229
+      ],
+      [
+        424,
+        2,
+        207,
+        229
+      ],
+      [
+        635,
+        2,
+        207,
+        229
+      ],
+      [
+        846,
+        2,
+        207,
+        229
+      ],
+      [
+        1057,
+        2,
+        207,
+        229
+      ],
+      [
+        1268,
+        2,
+        207,
+        229
+      ]
+    ],
+    "atlas_size": [
+      1688,
+      233
+    ],
+    "frame_box": [
+      207,
+      229
+    ]
+  },
+  "land": {
+    "animation": "land",
+    "times": [
+      0.0,
+      0.04,
+      0.08,
+      0.12
+    ],
+    "duration": 0.12,
+    "loop": false,
+    "pivot": [
+      58,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "sound_event": "land"
+    },
+    "texture": "res://assets/blender/land.png",
+    "rects": [
+      [
+        2,
+        2,
+        122,
+        218
+      ],
+      [
+        128,
+        2,
+        122,
+        218
+      ],
+      [
+        254,
+        2,
+        122,
+        218
+      ],
+      [
+        380,
+        2,
+        122,
+        218
+      ]
+    ],
+    "atlas_size": [
+      1008,
+      222
+    ],
+    "frame_box": [
+      122,
+      218
+    ]
+  },
+  "low_kick": {
+    "animation": "low_kick",
+    "times": [
+      0.0,
+      0.04,
+      0.08,
+      0.14,
+      0.22,
+      0.3
+    ],
+    "duration": 0.3,
+    "loop": false,
+    "pivot": [
+      58,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "attack_state": "crouch_kick",
+      "startup_start": 0.0,
+      "hitbox_on": 0.08,
+      "hitbox_off": 0.2,
+      "impact_frame": 2,
+      "movement_impulse": 150.0,
+      "sound_event": "sweep",
+      "hit_sound": "hit_heavy",
+      "damage": 14.0,
+      "chip_damage": 2.5,
+      "knockback": [
+        230.0,
+        -190.0
+      ],
+      "hit_stun": 0.4,
+      "attack_type": "low",
+      "is_sweep": true,
+      "heavy_hit": true,
+      "trail_event": true,
+      "recovery_start": 0.2,
+      "animation_end": 0.3,
+      "can_combo_cancel": true
+    },
+    "texture": "res://assets/blender/low_kick.png",
+    "rects": [
+      [
+        2,
+        2,
+        157,
+        216
+      ],
+      [
+        163,
+        2,
+        157,
+        216
+      ],
+      [
+        324,
+        2,
+        157,
+        216
+      ],
+      [
+        485,
+        2,
+        157,
+        216
+      ],
+      [
+        646,
+        2,
+        157,
+        216
+      ],
+      [
+        807,
+        2,
+        157,
+        216
+      ]
+    ],
+    "atlas_size": [
+      1288,
+      220
+    ],
+    "frame_box": [
+      157,
+      216
+    ]
+  },
+  "roundhouse_kick": {
+    "animation": "roundhouse_kick",
+    "times": [
+      0.0,
+      0.06,
+      0.12,
+      0.18,
+      0.24,
+      0.3,
+      0.36
+    ],
+    "duration": 0.36,
+    "loop": false,
+    "pivot": [
+      46,
+      214
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "attack_state": "kick_2",
+      "startup_start": 0.0,
+      "hitbox_on": 0.12,
+      "hitbox_off": 0.24,
+      "impact_frame": 3,
+      "movement_impulse": 130.0,
+      "sound_event": "whoosh_heavy",
+      "hit_sound": "hit_heavy",
+      "damage": 17.0,
+      "chip_damage": 3.5,
+      "knockback": [
+        360.0,
+        -150.0
+      ],
+      "hit_stun": 0.35,
+      "attack_type": "high",
+      "heavy_hit": true,
+      "trail_event": true,
+      "recovery_start": 0.24,
+      "animation_end": 0.36,
+      "can_combo_cancel": false
+    },
+    "texture": "res://assets/blender/roundhouse_kick.png",
+    "rects": [
+      [
+        2,
+        2,
+        163,
+        219
+      ],
+      [
+        169,
+        2,
+        163,
+        219
+      ],
+      [
+        336,
+        2,
+        163,
+        219
+      ],
+      [
+        503,
+        2,
+        163,
+        219
+      ],
+      [
+        670,
+        2,
+        163,
+        219
+      ],
+      [
+        837,
+        2,
+        163,
+        219
+      ],
+      [
+        1004,
+        2,
+        163,
+        219
+      ]
+    ],
+    "atlas_size": [
+      1336,
+      223
+    ],
+    "frame_box": [
+      163,
+      219
+    ]
+  },
+  "side_kick": {
+    "animation": "side_kick",
+    "times": [
+      0.0,
+      0.05,
+      0.1,
+      0.17,
+      0.25,
+      0.34
+    ],
+    "duration": 0.34,
+    "loop": false,
+    "pivot": [
+      51,
+      211
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "attack_state": "kick_1",
+      "startup_start": 0.0,
+      "hitbox_on": 0.1,
+      "hitbox_off": 0.22,
+      "impact_frame": 2,
+      "movement_impulse": 110.0,
+      "sound_event": "whoosh_heavy",
+      "hit_sound": "hit_light",
+      "damage": 13.0,
+      "chip_damage": 2.5,
+      "knockback": [
+        280.0,
+        -80.0
+      ],
+      "hit_stun": 0.28,
+      "attack_type": "mid",
+      "trail_event": true,
+      "recovery_start": 0.22,
+      "animation_end": 0.34,
+      "can_combo_cancel": true
+    },
+    "texture": "res://assets/blender/side_kick.png",
+    "rects": [
+      [
+        2,
+        2,
+        160,
+        216
+      ],
+      [
+        166,
+        2,
+        160,
+        216
+      ],
+      [
+        330,
+        2,
+        160,
+        216
+      ],
+      [
+        494,
+        2,
+        160,
+        216
+      ],
+      [
+        658,
+        2,
+        160,
+        216
+      ],
+      [
+        822,
+        2,
+        160,
+        216
+      ]
+    ],
+    "atlas_size": [
+      1312,
+      220
+    ],
+    "frame_box": [
+      160,
+      216
+    ]
+  },
+  "uppercut": {
+    "animation": "uppercut",
+    "times": [
+      0.0,
+      0.05,
+      0.11,
+      0.17,
+      0.24,
+      0.32
+    ],
+    "duration": 0.32,
+    "loop": false,
+    "pivot": [
+      55,
+      224
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "attack_state": "crouch_punch",
+      "startup_start": 0.0,
+      "hitbox_on": 0.11,
+      "hitbox_off": 0.22,
+      "impact_frame": 2,
+      "movement_impulse": 100.0,
+      "sound_event": "whoosh_heavy",
+      "hit_sound": "hit_heavy",
+      "damage": 18.0,
+      "chip_damage": 3.5,
+      "knockback": [
+        200.0,
+        -220.0
+      ],
+      "hit_stun": 0.38,
+      "attack_type": "mid",
+      "heavy_hit": true,
+      "trail_event": true,
+      "recovery_start": 0.22,
+      "animation_end": 0.32,
+      "can_combo_cancel": false
+    },
+    "texture": "res://assets/blender/uppercut.png",
+    "rects": [
+      [
+        2,
+        2,
+        113,
+        234
+      ],
+      [
+        119,
+        2,
+        113,
+        234
+      ],
+      [
+        236,
+        2,
+        113,
+        234
+      ],
+      [
+        353,
+        2,
+        113,
+        234
+      ],
+      [
+        470,
+        2,
+        113,
+        234
+      ],
+      [
+        587,
+        2,
+        113,
+        234
+      ]
+    ],
+    "atlas_size": [
+      936,
+      238
+    ],
+    "frame_box": [
+      113,
+      234
+    ]
+  },
+  "walk_backward": {
+    "animation": "walk_backward",
+    "times": [
+      0.0,
+      0.075,
+      0.15,
+      0.22499999999999998,
+      0.3,
+      0.375,
+      0.44999999999999996,
+      0.525
+    ],
+    "duration": 0.6,
+    "loop": true,
+    "pivot": [
+      57,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "movement_speed": -175.0
+    },
+    "texture": "res://assets/blender/walk_backward.png",
+    "rects": [
+      [
+        2,
+        2,
+        129,
+        217
+      ],
+      [
+        135,
+        2,
+        129,
+        217
+      ],
+      [
+        268,
+        2,
+        129,
+        217
+      ],
+      [
+        401,
+        2,
+        129,
+        217
+      ],
+      [
+        534,
+        2,
+        129,
+        217
+      ],
+      [
+        667,
+        2,
+        129,
+        217
+      ],
+      [
+        800,
+        2,
+        129,
+        217
+      ],
+      [
+        933,
+        2,
+        129,
+        217
+      ]
+    ],
+    "atlas_size": [
+      1064,
+      221
+    ],
+    "frame_box": [
+      129,
+      217
+    ]
+  },
+  "walk_forward": {
+    "animation": "walk_forward",
+    "times": [
+      0.0,
+      0.075,
+      0.15,
+      0.22499999999999998,
+      0.3,
+      0.375,
+      0.44999999999999996,
+      0.525
+    ],
+    "duration": 0.6,
+    "loop": true,
+    "pivot": [
+      60,
+      208
+    ],
+    "game_scale": 0.625,
+    "events": {
+      "sound_event": "footstep",
+      "movement_speed": 250.0
+    },
+    "texture": "res://assets/blender/walk_forward.png",
+    "rects": [
+      [
+        2,
+        2,
+        137,
+        218
+      ],
+      [
+        143,
+        2,
+        137,
+        218
+      ],
+      [
+        284,
+        2,
+        137,
+        218
+      ],
+      [
+        425,
+        2,
+        137,
+        218
+      ],
+      [
+        566,
+        2,
+        137,
+        218
+      ],
+      [
+        707,
+        2,
+        137,
+        218
+      ],
+      [
+        848,
+        2,
+        137,
+        218
+      ],
+      [
+        989,
+        2,
+        137,
+        218
+      ]
+    ],
+    "atlas_size": [
+      1128,
+      222
+    ],
+    "frame_box": [
+      137,
+      218
     ]
   }
 }

@@ -1,0 +1,18 @@
+{
+  "animation": "jump_start",
+  "times": [
+    0.0,
+    0.06,
+    0.12
+  ],
+  "duration": 0.12,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "sound_event": "jump"
+  }
+}

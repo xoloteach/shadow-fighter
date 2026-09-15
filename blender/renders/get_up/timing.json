@@ -1,0 +1,19 @@
+{
+  "animation": "get_up",
+  "times": [
+    0.0,
+    0.09,
+    0.18,
+    0.27,
+    0.36,
+    0.45
+  ],
+  "duration": 0.45,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {}
+}

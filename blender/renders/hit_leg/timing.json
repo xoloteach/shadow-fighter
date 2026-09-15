@@ -1,0 +1,20 @@
+{
+  "animation": "hit_leg",
+  "times": [
+    0.0,
+    0.04,
+    0.08,
+    0.14,
+    0.2
+  ],
+  "duration": 0.2,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "hit_zone": "low"
+  }
+}

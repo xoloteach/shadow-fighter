@@ -1,0 +1,41 @@
+{
+  "animation": "hook",
+  "times": [
+    0.0,
+    0.05,
+    0.1,
+    0.16,
+    0.22,
+    0.3
+  ],
+  "duration": 0.3,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "events": {
+    "attack_state": "punch_3",
+    "startup_start": 0.0,
+    "hitbox_on": 0.1,
+    "hitbox_off": 0.2,
+    "impact_frame": 2,
+    "movement_impulse": 140.0,
+    "sound_event": "whoosh_heavy",
+    "hit_sound": "hit_heavy",
+    "damage": 16.0,
+    "chip_damage": 3.0,
+    "knockback": [
+      340.0,
+      -130.0
+    ],
+    "hit_stun": 0.34,
+    "attack_type": "high",
+    "heavy_hit": true,
+    "trail_event": true,
+    "recovery_start": 0.2,
+    "animation_end": 0.3,
+    "can_combo_cancel": false
+  }
+}
