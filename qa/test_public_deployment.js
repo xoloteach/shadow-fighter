@@ -49,14 +49,20 @@ const fs = require('fs');
   await page.screenshot({ path: ssPath });
   console.log('Captured public deployment screenshot:', ssPath);
 
-  // Send movement & attacks on the public deployment
-  console.log('Sending combat inputs to public game...');
+  // Verify the V3 campaign launch path and exchange combat inputs.
+  console.log('Launching a campaign duel on the public deployment...');
+  await page.mouse.click(640, 655); // Battle Map
+  await page.waitForTimeout(700);
+  await page.mouse.click(640, 225); // first available tournament fight
+  await page.waitForTimeout(600);
+  await page.mouse.click(725, 505); // Fight
+  await page.waitForTimeout(1400);
   await page.keyboard.press('KeyD');
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(120);
   await page.keyboard.press('KeyJ');
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(120);
   await page.keyboard.press('KeyJ');
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(120);
   await page.keyboard.press('KeyK');
   await page.waitForTimeout(300);
 
