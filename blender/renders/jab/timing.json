@@ -1,0 +1,24 @@
+{
+  "animation": "jab",
+  "times": [
+    0,
+    0.03,
+    0.06,
+    0.12,
+    0.16666666666666666,
+    0.2
+  ],
+  "duration": 0.24,
+  "loop": false,
+  "pivot": [
+    128,
+    296
+  ],
+  "game_scale": 0.625,
+  "combat": {
+    "state": "punch_1",
+    "startup": 0.06,
+    "active_end": 0.16,
+    "recovery_end": 0.24
+  }
+}

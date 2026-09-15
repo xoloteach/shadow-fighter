@@ -2,11 +2,19 @@ class_name FighterVisuals
 extends Node2D
 
 @export var is_player: bool = true
+@export var use_blender_sprites: bool = true
 
 # Silhouette styling colors
 const COLOR_BODY = Color(0.05, 0.05, 0.08, 1.0)
 const COLOR_RIM = Color(0.20, 0.22, 0.32, 0.8)
 const COLOR_GI_TRIM = Color(0.09, 0.09, 0.14, 1.0)
+
+# Blender sprite pipeline
+var blender_sprite: Sprite2D = null
+var is_rendering_blender_sprite: bool = false
+static var blender_library: Dictionary = {}
+static var blender_textures: Dictionary = {}
+static var blender_library_loaded: bool = false
 
 var eye_color: Color = Color(0.15, 0.95, 1.0, 1.0)
 var accent_color: Color = Color(0.0, 0.8, 1.0, 0.9)
@@ -53,7 +61,36 @@ var leg_b_knee: Vector2 = Vector2(-14, -28)
 var leg_b_foot: Vector2 = Vector2(-18, 0)
 
 func _ready() -> void:
+	_ensure_blender_library_loaded()
+	if not blender_sprite:
+		blender_sprite = Sprite2D.new()
+		blender_sprite.name = "BlenderSprite"
+		blender_sprite.centered = false
+		blender_sprite.visible = false
+		blender_sprite.z_index = 0
+		add_child(blender_sprite)
 	setup_style(is_player)
+
+static func _ensure_blender_library_loaded() -> void:
+	if blender_library_loaded:
+		return
+	blender_library_loaded = true
+	var path = "res://assets/blender/library.json"
+	if not FileAccess.file_exists(path):
+		return
+	var file = FileAccess.open(path, FileAccess.READ)
+	if not file:
+		return
+	var json = JSON.new()
+	var err = json.parse(file.get_as_text())
+	if err == OK and json.data is Dictionary:
+		blender_library = json.data
+		for anim_key in blender_library.keys():
+			var info = blender_library[anim_key]
+			if info.has("texture"):
+				var tex = load(info["texture"])
+				if tex:
+					blender_textures[anim_key] = tex
 
 func setup_style(player_flag: bool) -> void:
 	is_player = player_flag
@@ -91,6 +128,53 @@ func update_visuals(delta: float, fighter: CharacterBody2D) -> void:
 	
 	_solve_pose(fighter)
 	_update_ribbon_physics(delta, fighter)
+	
+	# Check if this pose should render using Blender sprites
+	is_rendering_blender_sprite = false
+	if is_player and use_blender_sprites:
+		var anim_name = ""
+		var current_time = 0.0
+		if current_pose == "idle":
+			anim_name = "idle"
+			current_time = fmod(pose_time, 1.0)
+		elif current_pose == "punch_1":
+			anim_name = "jab"
+			current_time = fighter.state_timer
+		
+		if anim_name != "" and blender_library.has(anim_name) and blender_textures.has(anim_name):
+			var anim_info = blender_library[anim_name]
+			var times: Array = anim_info.get("times", [])
+			var rects: Array = anim_info.get("rects", [])
+			var frame_idx = 0
+			for i in range(times.size()):
+				if float(times[i]) <= current_time:
+					frame_idx = i
+			if frame_idx < rects.size() and blender_sprite:
+				var r = rects[frame_idx]
+				var src_rect = Rect2(r[0], r[1], r[2], r[3])
+				var gscale: float = float(anim_info.get("game_scale", 0.625))
+				var p: Array = anim_info.get("pivot", [45, 207])
+				var p_x: float = float(p[0])
+				var p_y: float = float(p[1])
+				
+				blender_sprite.texture = blender_textures[anim_name]
+				blender_sprite.region_enabled = true
+				blender_sprite.region_rect = src_rect
+				blender_sprite.visible = true
+				blender_sprite.modulate = flash_color if flash_timer > 0.0 else Color.WHITE
+				
+				if facing >= 0.0:
+					blender_sprite.scale = Vector2(gscale, gscale)
+					blender_sprite.position = Vector2(-p_x * gscale, -p_y * gscale)
+				else:
+					blender_sprite.scale = Vector2(-gscale, gscale)
+					blender_sprite.position = Vector2(p_x * gscale, -p_y * gscale)
+				
+				is_rendering_blender_sprite = true
+	
+	if not is_rendering_blender_sprite and blender_sprite:
+		blender_sprite.visible = false
+	
 	queue_redraw()
 
 func trigger_hit_flash(color: Color = Color.WHITE) -> void:
@@ -549,6 +633,26 @@ func _draw() -> void:
 	# Ground contact shadow
 	var shadow_col = Color(0.02, 0.02, 0.04, 0.5)
 	draw_circle(Vector2(0, 0), 28.0, shadow_col)
+	
+	if is_rendering_blender_sprite:
+		# Draw ribbon over sprite
+		_draw_ribbon()
+		
+		# Attack Trail
+		if trail_alpha > 0.01 and trail_points.size() >= 3:
+			var c = trail_color
+			c.a *= trail_alpha
+			draw_polyline(trail_points, c, 12.0, true)
+			var c_core = Color(1.0, 1.0, 1.0, 0.9 * trail_alpha)
+			draw_polyline(trail_points, c_core, 4.0, true)
+		
+		# Block Barrier Pulse
+		if block_pulse > 0.01:
+			var bp_color = Color(0.2, 0.85, 1.0, block_pulse * 0.65)
+			var center = (shoulder_pos + arm_f_fist) * 0.5 + Vector2(12 * facing, 0)
+			draw_arc(center, 32.0, -PI * 0.45, PI * 0.45, 20, bp_color, 5.0, true)
+			draw_arc(center, 40.0, -PI * 0.35, PI * 0.35, 16, Color(1, 1, 1, block_pulse * 0.85), 2.5, true)
+		return
 	
 	# 1. Back Arm
 	_draw_muscled_arm(shoulder_pos + Vector2(-4 * facing, 0), arm_b_elbow, arm_b_fist, cur_body_color, false)
