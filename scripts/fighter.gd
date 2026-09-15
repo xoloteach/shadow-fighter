@@ -60,7 +60,7 @@ var sound_gen: Node = null
 
 func _ready() -> void:
 	current_health = max_health
-	visuals.is_player = is_player
+	visuals.setup_style(is_player)
 	visuals.facing = facing_direction
 	
 	# Set collision layers
@@ -152,6 +152,13 @@ func _physics_process(delta: float) -> void:
 	# Apply gravity if airborne
 	if not is_on_floor() and current_state != "dead":
 		velocity.y += gravity * delta
+	
+	# Soft body push separation so fighters do not clip or overlap
+	if opponent and is_on_floor():
+		var dx = global_position.x - opponent.global_position.x
+		if abs(dx) < 38.0 and abs(global_position.y - opponent.global_position.y) < 60.0:
+			var push_dir = signf(dx) if abs(dx) > 0.5 else (1.0 if is_player else -1.0)
+			velocity.x += push_dir * 140.0
 	
 	move_and_slide()
 	
@@ -306,12 +313,12 @@ func _process_attack_state(delta: float) -> void:
 	
 	# Hitbox active window
 	if state_timer >= attack_active_start and state_timer <= attack_active_end:
-		if not hitbox.monitoring:
+		if not hitbox.is_active:
 			_position_hitbox_for_attack(current_attack_name)
 			hitbox.activate()
 			visuals.trigger_attack_trail()
 	elif state_timer > attack_active_end:
-		if hitbox.monitoring:
+		if hitbox.is_active:
 			hitbox.deactivate()
 	
 	# Combo chaining window

@@ -19,14 +19,11 @@ func _ready() -> void:
 	camera.target_p1 = p1
 	camera.target_p2 = p2
 	
-	# Wire combat manager and UI
-	combat_manager.p1 = p1
-	combat_manager.p2 = p2
-	combat_manager.camera = camera
+	# Wire combat manager and camera
+	combat_manager.initialize(p1, p2, camera)
 	
-	ui.p1 = p1
-	ui.p2 = p2
-	ui.combat_manager = combat_manager
+	# Initialize UI with references & signal connections
+	ui.initialize(p1, p2, combat_manager)
 	ui.restart_requested.connect(_on_restart)
 	
 	# Connect hit effects
@@ -39,7 +36,7 @@ func _ready() -> void:
 	# Start match
 	combat_manager.start_new_match()
 
-func _on_fighter_hit_taken(damage: float, is_blocked: bool, hit_pos: Vector2) -> void:
+func _on_fighter_hit_taken(_damage: float, is_blocked: bool, hit_pos: Vector2) -> void:
 	var spark = HIT_SPARK_SCENE.instantiate() as HitSpark
 	spark.global_position = hit_pos
 	spark.is_blocked = is_blocked

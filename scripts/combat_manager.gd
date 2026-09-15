@@ -27,17 +27,29 @@ var p1_max_combo: int = 0
 var total_match_time: float = 0.0
 
 var sound_gen: Node
+var hud: HUD
 
 func _ready() -> void:
 	sound_gen = get_tree().root.find_child("SoundGenerator", true, false)
+
+func initialize(p1_ref: Fighter, p2_ref: Fighter, camera_ref: StageCamera) -> void:
+	p1 = p1_ref
+	p2 = p2_ref
+	camera = camera_ref
 	
 	if p1:
-		p1.defeated.connect(_on_p1_defeated)
-		p1.combo_updated.connect(_on_p1_combo_updated)
-		p1.hit_taken.connect(_on_p1_hit_taken)
+		if not p1.defeated.is_connected(_on_p1_defeated):
+			p1.defeated.connect(_on_p1_defeated)
+		if not p1.combo_updated.is_connected(_on_p1_combo_updated):
+			p1.combo_updated.connect(_on_p1_combo_updated)
+		if not p1.hit_taken.is_connected(_on_p1_hit_taken):
+			p1.hit_taken.connect(_on_p1_hit_taken)
+	
 	if p2:
-		p2.defeated.connect(_on_p2_defeated)
-		p2.hit_taken.connect(_on_p2_hit_taken)
+		if not p2.defeated.is_connected(_on_p2_defeated):
+			p2.defeated.connect(_on_p2_defeated)
+		if not p2.hit_taken.is_connected(_on_p2_hit_taken):
+			p2.hit_taken.connect(_on_p2_hit_taken)
 
 func start_new_match() -> void:
 	p1_round_wins = 0
@@ -51,7 +63,7 @@ func start_new_match() -> void:
 	_start_round(current_round)
 
 func _process(delta: float) -> void:
-	if not is_round_active:
+	if not is_round_active or match_over:
 		return
 	
 	total_match_time += delta
@@ -68,11 +80,12 @@ func _start_round(round_num: int) -> void:
 	round_timer = ROUND_TIME_LIMIT
 	timer_updated.emit(int(round_timer))
 	
-	# Position fighters
-	p1.reset_match(Vector2(-200.0, 540.0), 1.0)
-	p2.reset_match(Vector2(200.0, 540.0), -1.0)
-	p1.is_active_match = false
-	p2.is_active_match = false
+	if p1:
+		p1.reset_match(Vector2(-200.0, 540.0), 1.0)
+		p1.is_active_match = false
+	if p2:
+		p2.reset_match(Vector2(200.0, 540.0), -1.0)
+		p2.is_active_match = false
 	
 	var round_title = "ROUND " + str(round_num)
 	if p1_round_wins == ROUNDS_TO_WIN - 1 and p2_round_wins == ROUNDS_TO_WIN - 1:
@@ -83,15 +96,19 @@ func _start_round(round_num: int) -> void:
 	
 	# Start countdown timer
 	get_tree().create_timer(1.2).timeout.connect(func():
+		if match_over:
+			return
 		announcement_shown.emit("FIGHT!", "")
 		_play_sound("whoosh_heavy", 1.3, 0.8)
-		p1.is_active_match = true
-		p2.is_active_match = true
+		if p1:
+			p1.is_active_match = true
+		if p2:
+			p2.is_active_match = true
 		is_round_active = true
 		
-		# Clear announcement after 0.8s
-		get_tree().create_timer(0.8).timeout.connect(func():
-			announcement_shown.emit("", "")
+		get_tree().create_timer(0.9).timeout.connect(func():
+			if is_round_active:
+				announcement_shown.emit("", "")
 		)
 	)
 
@@ -113,35 +130,36 @@ func _on_timeout() -> void:
 	if not is_round_active:
 		return
 	is_round_active = false
-	p1.is_active_match = false
-	p2.is_active_match = false
+	if p1:
+		p1.is_active_match = false
+	if p2:
+		p2.is_active_match = false
 	
-	announcement_shown.emit("TIME UP!", "")
 	_play_sound("round_bell", 0.9, 1.0)
 	
-	if p1.current_health > p2.current_health:
-		p1_round_wins += 1
-		_resolve_round_end(p1, p2, true)
-	elif p2.current_health > p1.current_health:
-		p2_round_wins += 1
-		_resolve_round_end(p2, p1, false)
-	else:
-		# Draw: both get a point
-		p1_round_wins += 1
-		p2_round_wins += 1
-		_resolve_round_end(null, null, false)
+	if p1 and p2:
+		if p1.current_health > p2.current_health:
+			p1_round_wins += 1
+			_resolve_round_end(p1, p2, true)
+		elif p2.current_health > p1.current_health:
+			p2_round_wins += 1
+			_resolve_round_end(p2, p1, false)
+		else:
+			p1_round_wins += 1
+			p2_round_wins += 1
+			_resolve_round_end(null, null, false)
 
 func _resolve_round_end(winner: Fighter, loser: Fighter, is_player_win: bool) -> void:
 	if camera:
-		camera.add_shake(12.0)
+		camera.add_shake(14.0)
 	
 	if winner:
 		winner.trigger_victory()
 	
-	var ko_text = "K.O.!" if (loser and loser.current_health <= 0.0) else "ROUND OVER"
-	announcement_shown.emit(ko_text, "")
+	var ko_text = "K.O.!" if (loser and loser.current_health <= 0.0) else "TIME UP!"
+	announcement_shown.emit(ko_text, "ROUND OVER")
 	
-	get_tree().create_timer(2.0).timeout.connect(func():
+	get_tree().create_timer(2.2).timeout.connect(func():
 		# Check if match is won
 		if p1_round_wins >= ROUNDS_TO_WIN or p2_round_wins >= ROUNDS_TO_WIN:
 			match_over = true
@@ -167,13 +185,13 @@ func _on_p1_combo_updated(hits: int) -> void:
 
 func _on_p1_hit_taken(_damage: float, is_blocked: bool, _pos: Vector2) -> void:
 	if camera:
-		camera.add_shake(4.0 if is_blocked else 8.0)
+		camera.add_shake(3.0 if is_blocked else 7.0)
 
 func _on_p2_hit_taken(_damage: float, is_blocked: bool, _pos: Vector2) -> void:
 	if not is_blocked:
 		p1_total_hits += 1
 	if camera:
-		camera.add_shake(4.0 if is_blocked else 10.0)
+		camera.add_shake(3.0 if is_blocked else 9.0)
 
 func _play_sound(sname: String, pitch: float = 1.0, vol: float = 1.0) -> void:
 	if sound_gen and sound_gen.has_method("play"):

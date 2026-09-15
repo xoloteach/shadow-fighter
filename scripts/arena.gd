@@ -163,15 +163,21 @@ func _draw() -> void:
 	_draw_stone_lantern(Vector2(-430, floor_y), fg_deck_col)
 	_draw_stone_lantern(Vector2(430, floor_y), fg_deck_col)
 	
-	# 7. Drifting Rolling Mist
+	# 7. Drifting Rolling Mist Wisps
 	for m in mist_clouds:
-		var col = Color(0.85, 0.75, 0.8, m.alpha)
-		# Draw oval mist
-		var pts = PackedVector2Array()
-		for a in range(16):
-			var ang = (float(a) / 16.0) * TAU
-			pts.append(m.pos + Vector2(cos(ang) * m.radius_x, sin(ang) * m.radius_y))
-		draw_colored_polygon(pts, col)
+		var wisp_col = Color(0.92, 0.85, 0.95, m.alpha * 0.4)
+		var wisp_pts = PackedVector2Array([
+			m.pos + Vector2(-m.radius_x, 0),
+			m.pos + Vector2(-m.radius_x * 0.4, -m.radius_y),
+			m.pos + Vector2(m.radius_x * 0.4, -m.radius_y * 0.7),
+			m.pos + Vector2(m.radius_x, 0),
+			m.pos + Vector2(m.radius_x * 0.4, m.radius_y * 0.5),
+			m.pos + Vector2(-m.radius_x * 0.4, m.radius_y * 0.4)
+		])
+		draw_colored_polygon(wisp_pts, wisp_col)
+		# Softer inner core
+		var core_col = Color(0.95, 0.9, 1.0, m.alpha * 0.25)
+		draw_line(m.pos - Vector2(m.radius_x * 0.7, 0), m.pos + Vector2(m.radius_x * 0.7, 0), core_col, m.radius_y * 0.6)
 	
 	# 8. Drifting Sakura Blossom Petals
 	for p in petals:

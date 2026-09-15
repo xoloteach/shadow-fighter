@@ -10,7 +10,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1_bar"]
-bg_color = Color(0.1, 0.8, 0.9, 1)
+bg_color = Color(0.1, 0.85, 0.95, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -59,20 +59,20 @@ content_margin_right = 12.0
 content_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_announcement"]
-bg_color = Color(0.05, 0.04, 0.08, 0.92)
+bg_color = Color(0.05, 0.04, 0.08, 0.94)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.9, 0.3, 0.2, 1)
+border_color = Color(0.95, 0.45, 0.2, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-content_margin_left = 32.0
-content_margin_top = 16.0
-content_margin_right = 32.0
-content_margin_bottom = 16.0
+content_margin_left = 36.0
+content_margin_top = 18.0
+content_margin_right = 36.0
+content_margin_bottom = 18.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
 bg_color = Color(0.08, 0.07, 0.12, 0.96)
@@ -80,7 +80,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.8, 0.6, 0.2, 1)
+border_color = Color(0.85, 0.65, 0.25, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -115,28 +115,40 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_touch_btn"]
-bg_color = Color(0.12, 0.1, 0.18, 0.65)
+bg_color = Color(0.10, 0.08, 0.16, 0.75)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.4, 0.5, 0.7, 0.7)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+border_color = Color(0.4, 0.5, 0.7, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_touch_action"]
-bg_color = Color(0.18, 0.12, 0.24, 0.7)
+bg_color = Color(0.15, 0.10, 0.20, 0.75)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.85, 0.4, 0.5, 0.8)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+border_color = Color(0.85, 0.4, 0.5, 0.85)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toggle_btn"]
+bg_color = Color(0.12, 0.10, 0.18, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.5, 0.65, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -153,9 +165,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 24.0
-offset_top = 18.0
+offset_top = 16.0
 offset_right = -24.0
-offset_bottom = 74.0
+offset_bottom = 76.0
 grow_horizontal = 2
 theme_override_constants/separation = 16
 alignment = 1
@@ -296,11 +308,12 @@ layout_mode = 2
 color = Color(0.2, 0.2, 0.25, 0.6)
 
 [node name="TouchToggleBtn" type="Button" parent="TopBar"]
-custom_minimum_size = Vector2(40, 36)
+custom_minimum_size = Vector2(64, 38)
 layout_mode = 2
 size_flags_vertical = 0
-tooltip_text = "Toggle On-Screen Touch Controls"
-text = "📱"
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_toggle_btn")
+text = "TOUCH"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -316,7 +329,7 @@ mouse_filter = 2
 
 [node name="AnnouncementPanel" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 2
-pivot_offset = Vector2(120, 45)
+pivot_offset = Vector2(140, 45)
 theme_override_styles/panel = SubResource("StyleBoxFlat_announcement")
 
 [node name="VBox" type="VBoxContainer" parent="CenterContainer/AnnouncementPanel"]
@@ -326,7 +339,7 @@ alignment = 1
 [node name="MainLabel" type="Label" parent="CenterContainer/AnnouncementPanel/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 46
@@ -380,9 +393,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 180.0
+offset_left = 120.0
 offset_top = -32.0
-offset_right = -180.0
+offset_right = -120.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -392,7 +405,7 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.75, 0.85, 0.85)
 theme_override_font_sizes/font_size = 13
-text = "[A/D or ←/→] Move  |  [W or Space] Jump  |  [S] Crouch  |  [J/Z] Punch  |  [K/X] Kick  |  [L/C/Shift] Block  |  [R] Restart"
+text = "[A/D or Arrows] Move  |  [W/Space] Jump  |  [S] Crouch  |  [J/Z] Punch  |  [K/X] Kick  |  [L/C/Shift] Block  |  [R] Restart"
 horizontal_alignment = 1
 
 [node name="TouchControls" type="Control" parent="."]
@@ -421,9 +434,9 @@ offset_left = 0.0
 offset_top = 60.0
 offset_right = 64.0
 offset_bottom = 124.0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_touch_btn")
-text = "◀"
+text = "LEFT"
 
 [node name="BtnRight" type="Button" parent="TouchControls/DPad"]
 layout_mode = 0
@@ -431,9 +444,9 @@ offset_left = 140.0
 offset_top = 60.0
 offset_right = 204.0
 offset_bottom = 124.0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_touch_btn")
-text = "▶"
+text = "RIGHT"
 
 [node name="BtnUp" type="Button" parent="TouchControls/DPad"]
 layout_mode = 0
@@ -441,9 +454,9 @@ offset_left = 70.0
 offset_top = 0.0
 offset_right = 134.0
 offset_bottom = 64.0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_touch_btn")
-text = "▲"
+text = "JUMP"
 
 [node name="BtnDown" type="Button" parent="TouchControls/DPad"]
 layout_mode = 0
@@ -451,9 +464,9 @@ offset_left = 70.0
 offset_top = 120.0
 offset_right = 134.0
 offset_bottom = 184.0
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_touch_btn")
-text = "▼"
+text = "CROUCH"
 
 [node name="Actions" type="Control" parent="TouchControls"]
 layout_mode = 1
@@ -476,7 +489,7 @@ offset_top = 70.0
 offset_right = 90.0
 offset_bottom = 146.0
 theme_override_colors/font_color = Color(0.3, 0.9, 1, 1)
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_touch_action")
 text = "PUNCH\n[J]"
 
@@ -487,7 +500,7 @@ offset_top = 10.0
 offset_right = 176.0
 offset_bottom = 86.0
 theme_override_colors/font_color = Color(1, 0.4, 0.6, 1)
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_touch_action")
 text = "KICK\n[K]"
 
@@ -498,7 +511,7 @@ offset_top = 100.0
 offset_right = 186.0
 offset_bottom = 176.0
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_touch_action")
 text = "BLOCK\n[L]"
 
@@ -518,7 +531,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.03, 0.07, 0.75)
+color = Color(0.04, 0.03, 0.07, 0.8)
 
 [node name="Panel" type="PanelContainer" parent="GameOverModal"]
 custom_minimum_size = Vector2(380, 320)
@@ -591,7 +604,7 @@ custom_minimum_size = Vector2(220, 52)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_hover")

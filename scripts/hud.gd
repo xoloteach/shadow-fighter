@@ -3,9 +3,9 @@ extends Control
 
 signal restart_requested()
 
-@export var p1: Fighter
-@export var p2: Fighter
-@export var combat_manager: CombatManager
+var p1: Fighter
+var p2: Fighter
+var combat_manager: CombatManager
 
 # UI Element references
 @onready var p1_health_bar: ProgressBar = $TopBar/P1Container/HealthBar
@@ -50,33 +50,33 @@ var sound_gen: Node
 
 func _ready() -> void:
 	sound_gen = get_tree().root.find_child("SoundGenerator", true, false)
-	
 	announcement_panel.modulate.a = 0.0
 	combo_panel.modulate.a = 0.0
 	game_over_modal.visible = false
 	
 	restart_button.pressed.connect(_on_restart_pressed)
 	touch_toggle_button.pressed.connect(_on_touch_toggle_pressed)
+
+func initialize(p1_ref: Fighter, p2_ref: Fighter, cm_ref: CombatManager) -> void:
+	p1 = p1_ref
+	p2 = p2_ref
+	combat_manager = cm_ref
 	
 	if p1:
 		p1.health_changed.connect(_on_p1_health_changed)
 		p1.combo_updated.connect(_on_combo_updated)
 		p1_name_label.text = p1.fighter_name
+		_on_p1_health_changed(p1.current_health, p1.max_health)
 	
 	if p2:
 		p2.health_changed.connect(_on_p2_health_changed)
 		p2_name_label.text = p2.fighter_name
+		_on_p2_health_changed(p2.current_health, p2.max_health)
 	
 	if combat_manager:
 		combat_manager.timer_updated.connect(_on_timer_updated)
 		combat_manager.announcement_shown.connect(_on_announcement_shown)
 		combat_manager.match_ended.connect(_on_match_ended)
-	
-	# Mobile auto-detect or default setup
-	if DisplayServer.is_touchscreen_available() or OS.has_feature("mobile") or OS.has_feature("web_android") or OS.has_feature("web_ios"):
-		touch_controls.visible = true
-	else:
-		touch_controls.visible = true # show responsive touch buttons by default for accessibility & mobile browsers
 	
 	_setup_touch_inputs()
 
@@ -101,9 +101,8 @@ func _on_p1_health_changed(hp: float, max_hp: float) -> void:
 	p1_damage_trail.max_value = max_hp
 	p1_health_bar.value = hp
 	p1_trail_target = hp
-	p1_hp_label.text = str(int(hp)) + " HP"
+	p1_hp_label.text = str(int(ceil(hp))) + " HP"
 	
-	# Color shift at low health
 	if hp < 25.0:
 		p1_hp_label.modulate = Color(1.0, 0.3, 0.3)
 	else:
@@ -114,7 +113,7 @@ func _on_p2_health_changed(hp: float, max_hp: float) -> void:
 	p2_damage_trail.max_value = max_hp
 	p2_health_bar.value = hp
 	p2_trail_target = hp
-	p2_hp_label.text = str(int(hp)) + " HP"
+	p2_hp_label.text = str(int(ceil(hp))) + " HP"
 	
 	if hp < 25.0:
 		p2_hp_label.modulate = Color(1.0, 0.3, 0.3)
@@ -139,7 +138,7 @@ func _on_announcement_shown(main_txt: String, sub_txt: String) -> void:
 	sub_announcement_label.visible = not sub_txt.is_empty()
 	
 	announcement_panel.modulate.a = 1.0
-	announcement_panel.scale = Vector2(1.3, 1.3)
+	announcement_panel.scale = Vector2(1.25, 1.25)
 	
 	var tween = create_tween()
 	tween.set_parallel(true)
@@ -154,16 +153,15 @@ func _on_combo_updated(hits: int) -> void:
 	combo_hits_label.text = str(hits)
 	combo_text_label.text = "HITS COMBO!" if hits >= 3 else "HITS!"
 	
-	# Color escalation
 	if hits >= 5:
-		combo_hits_label.modulate = Color(1.0, 0.2, 0.6) # Magenta/Ruby
+		combo_hits_label.modulate = Color(1.0, 0.2, 0.6)
 	elif hits >= 3:
-		combo_hits_label.modulate = Color(1.0, 0.55, 0.1) # Fiery Orange
+		combo_hits_label.modulate = Color(1.0, 0.55, 0.1)
 	else:
-		combo_hits_label.modulate = Color(1.0, 0.9, 0.2) # Gold
+		combo_hits_label.modulate = Color(1.0, 0.9, 0.2)
 	
 	combo_panel.modulate.a = 1.0
-	combo_panel.scale = Vector2(1.4, 1.4)
+	combo_panel.scale = Vector2(1.35, 1.35)
 	var tween = create_tween()
 	tween.tween_property(combo_panel, "scale", Vector2(1.0, 1.0), 0.15).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
@@ -211,7 +209,6 @@ func _on_touch_toggle_pressed() -> void:
 	touch_controls.visible = not touch_controls.visible
 
 func _setup_touch_inputs() -> void:
-	# Wire up touch buttons to p1's touch variables
 	var btn_left = $TouchControls/DPad/BtnLeft as Button
 	var btn_right = $TouchControls/DPad/BtnRight as Button
 	var btn_up = $TouchControls/DPad/BtnUp as Button
