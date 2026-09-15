@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://training_ui_01"]
+
+[ext_resource type="Script" path="res://scripts/training_ui.gd" id="1_train"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.07, 0.06, 0.12, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.65, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 32.0
+content_margin_top = 24.0
+content_margin_right = 32.0
+content_margin_bottom = 24.0
+
+[node name="TrainingUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_train")
+
+[node name="TopHeader" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+
+[node name="BtnBack" type="Button" parent="TopHeader"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+text = "< DOJO"
+
+[node name="Title" type="Label" parent="TopHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 20
+text = "TRAINING DOJO • DUMMY PRACTICE"
+horizontal_alignment = 1
+
+[node name="BtnMoves" type="Button" parent="TopHeader"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+text = "MOVE LIST"
+
+[node name="BtnReset" type="Button" parent="TopHeader"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+text = "RESET DUMMY"
+
+[node name="Diagnostics" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -60.0
+offset_right = 260.0
+offset_bottom = 40.0
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="DamageLabel" type="Label" parent="Diagnostics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "LAST STRIKE: 0.0 DMG"
+
+[node name="ComboLabel" type="Label" parent="Diagnostics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "COMBO: 0 HITS"
+
+[node name="MoveListModal" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="MoveListModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.04, 0.85)
+
+[node name="Panel" type="PanelContainer" parent="MoveListModal"]
+custom_minimum_size = Vector2(620, 440)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -220.0
+offset_right = 310.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBox" type="VBoxContainer" parent="MoveListModal/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="MoveListModal/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 22
+text = "MARTIAL TECHNIQUES & COMBOS"
+horizontal_alignment = 1
+
+[node name="MovesText" type="RichTextLabel" parent="MoveListModal/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[color=#00e5ff]BASIC ATTACKS[/color]
+- [b]Jab[/b]: Punch [J] (Fast high-low frame startup)
+- [b]Cross[/b]: [J] -> [J] (Straight mid-strike follow-up)
+- [b]Hook[/b]: [J] -> [J] -> [J] (Heavy high knockout blow)
+- [b]Side Kick[/b]: Kick [K] (Crisp mid-range thrust)
+- [b]Roundhouse[/b]: [K] -> [K] or [J] -> [K] (High crescent sweep)
+
+[color=#00e5ff]DIRECTIONAL COMBAT[/color]
+- [b]Uppercut[/b]: Crouch [S] + Punch [J] (Anti-air vertical strike)
+- [b]Low Sweep[/b]: Crouch [S] + Kick [K] (Trip standing opponent)
+- [b]Jump Punch / Kick[/b]: Jump [W] + [J] / [K] (Airborne aerial descent)
+- [b]High Guard[/b]: Hold Block [L] or Walk Back (Away from foe)
+- [b]Low Guard[/b]: Crouch [S] + Hold Block [L]"
+
+[node name="BtnClose" type="Button" parent="MoveListModal/Panel/VBox"]
+custom_minimum_size = Vector2(160, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CLOSE"

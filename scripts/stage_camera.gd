@@ -4,9 +4,9 @@ extends Camera2D
 @export var target_p1: Fighter
 @export var target_p2: Fighter
 
-@export var min_zoom: float = 0.85
-@export var max_zoom: float = 1.15
-@export var base_y: float = 380.0
+@export var min_zoom: float = 0.78
+@export var max_zoom: float = 0.98
+@export var base_y: float = 370.0
 
 var shake_intensity: float = 0.0
 var shake_decay: float = 8.0
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	
 	# Calculate distance for dynamic zoom
 	var dist = abs(target_p1.global_position.x - target_p2.global_position.x)
-	var t = clampf((dist - 140.0) / 450.0, 0.0, 1.0)
+	var t = clampf((dist - 160.0) / 520.0, 0.0, 1.0)
 	var desired_zoom = lerpf(max_zoom, min_zoom, t)
 	zoom = zoom.lerp(Vector2(desired_zoom, desired_zoom), delta * 4.0)
 

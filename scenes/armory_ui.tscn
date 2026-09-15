@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://armory_ui_01"]
+
+[ext_resource type="Script" path="res://scripts/armory_ui.gd" id="1_armory"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.04, 0.04, 0.07, 0.96)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.07, 0.06, 0.12, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.65, 0.25, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 24.0
+content_margin_top = 20.0
+content_margin_right = 24.0
+content_margin_bottom = 20.0
+
+[node name="ArmoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_armory")
+
+[node name="Backdrop" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="TopHeader" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="BtnBack" type="Button" parent="TopHeader"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+text = "< DOJO"
+
+[node name="Title" type="Label" parent="TopHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 20
+text = "EQUIPMENT ARMORY • LOADOUT"
+horizontal_alignment = 1
+
+[node name="SlotTabs" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 60.0
+offset_top = 76.0
+offset_right = -60.0
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BtnMelee" type="Button" parent="SlotTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "PRIMARY WEAPON"
+
+[node name="BtnArmor" type="Button" parent="SlotTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "BODY ARMOR"
+
+[node name="BtnHelmet" type="Button" parent="SlotTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "HELMET / MASK"
+
+[node name="BtnRanged" type="Button" parent="SlotTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "RANGED"
+
+[node name="BtnSpecial" type="Button" parent="SlotTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "SPIRIT ART"
+
+[node name="ItemsList" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 136.0
+offset_right = 440.0
+offset_bottom = -30.0
+grow_vertical = 2
+
+[node name="Scroll" type="ScrollContainer" parent="ItemsList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="ItemsList/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ItemDetails" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -780.0
+offset_top = 136.0
+offset_right = -60.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="ItemDetails"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="ItemDetails/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ItemName" type="Label" parent="ItemDetails/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 24
+text = "Dusk Katana - Common"
+
+[node name="StatsLabel" type="Label" parent="ItemDetails/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Damage: 12.0 | Speed: 1.00x | Reach: 1.10x"
+
+[node name="PassiveLabel" type="Label" parent="ItemDetails/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+theme_override_font_sizes/font_size = 15
+text = "Trait: Clean Edge (+5% critical chance on slash)\nStandard folded steel blade of the Highland temple guard."
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="ItemDetails/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnEquip" type="Button" parent="ItemDetails/Panel/VBox"]
+custom_minimum_size = Vector2(220, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "EQUIP ITEM"

@@ -1,0 +1,34 @@
+{
+  "prologue": {
+    "title": "The Shattered Seal",
+    "text": "At dusk, when shadow blends into twilight, the great bronze Bell of Mount Toran once chimed across the valleys, maintaining harmony between the mortal realms and the ancient dusk spirits. But ambition brought ruin. General Kurozuka struck the Bell, shattering it into three obsidian shards and casting the provinces into perpetual conflict. A lone exile, Kage, awakens on the mountain slopes to mend the shattered seal."
+  },
+  "mentor_dialogue": {
+    "ch1_start": [
+      { "speaker": "Toran", "portrait": "toran", "text": "Awake, Kage. The mountain wind brings no peace today. The monks have fallen under the thrall of Warden Guro." },
+      { "speaker": "Kage", "portrait": "kage", "text": "Master Toran... the bell's chime is silent." },
+      { "speaker": "Toran", "portrait": "toran", "text": "Guro holds the first Shard within the ruined sanctuary. Arm yourself at the dojo, test your blade against the temple initiates, and claim the shard before dusk turns to midnight." }
+    ],
+    "ch1_complete": [
+      { "speaker": "Toran", "portrait": "toran", "text": "You fought with honor, Kage. The first Shard is reclaimed. But Guro was only a vassal. The second shard was taken downstream to Kawagishi." },
+      { "speaker": "Aoi", "portrait": "aoi", "text": "Wanderer! I am Aoi, smith of the riverside. In Kawagishi, Madame Lin rules the water trade with twin sickles. If you seek to challenge her, my forge is at your disposal." }
+    ],
+    "ch2_start": [
+      { "speaker": "Aoi", "portrait": "aoi", "text": "Watch the rooftops and canal walkways, Kage. Rain muffles the sound of throwing darts, and Lin's dancers strike without warning." },
+      { "speaker": "Kage", "portrait": "kage", "text": "I will tread lightly on the boardwalks." }
+    ],
+    "ch2_complete": [
+      { "speaker": "Madame Lin", "portrait": "lin", "text": "You fight like the rising tide... but the flood is already upon us. Kurozuka's war banners march upon the Smoldering Bastion." },
+      { "speaker": "Toran", "portrait": "toran", "text": "The final shard lies within Kurozuka's citadel. Prepare yourself, student. The fate of Yamashiro hangs in the twilight." }
+    ],
+    "ch3_start": [
+      { "speaker": "Aoi", "portrait": "aoi", "text": "The heat from the citadel forge scorches the horizon. I have tempered your armor with obsidian dust. Strike true, Kage." },
+      { "speaker": "Kage", "portrait": "kage", "text": "For the monastery. For Yamashiro." }
+    ],
+    "epilogue": [
+      { "speaker": "Toran", "portrait": "toran", "text": "The three shards resonate as one once more. The bronze bell chimes across the mountain, cleansing the dark mist." },
+      { "speaker": "Aoi", "portrait": "aoi", "text": "The provinces are at peace, Wandering Blade. Wherever shadows fall, the bell's echo will protect us." },
+      { "speaker": "Kage", "portrait": "kage", "text": "The dusk is quiet now." }
+    ]
+  }
+}

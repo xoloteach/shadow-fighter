@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://shop_ui_01"]
+
+[ext_resource type="Script" path="res://scripts/shop_ui.gd" id="1_shop"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.04, 0.04, 0.07, 0.96)
+
+[node name="ShopUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_shop")
+
+[node name="Backdrop" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="TopHeader" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="BtnBack" type="Button" parent="TopHeader"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+text = "< DOJO"
+
+[node name="Title" type="Label" parent="TopHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 20
+text = "AOI'S FORGE • WEAPONS & ARMOR SHOP"
+horizontal_alignment = 1
+
+[node name="Currency" type="HBoxContainer" parent="TopHeader"]
+layout_mode = 2
+
+[node name="CoinsLabel" type="Label" parent="TopHeader/Currency"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 18
+text = "250 MONSHU"
+
+[node name="CategoryTabs" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 60.0
+offset_top = 76.0
+offset_right = -60.0
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BtnMelee" type="Button" parent="CategoryTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "PRIMARY WEAPONS"
+
+[node name="BtnArmor" type="Button" parent="CategoryTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "ARMOR"
+
+[node name="BtnHelmet" type="Button" parent="CategoryTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "HELMETS & MASKS"
+
+[node name="BtnRanged" type="Button" parent="CategoryTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "RANGED"
+
+[node name="BtnSpecial" type="Button" parent="CategoryTabs"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 2
+text = "SPIRIT ARTS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 136.0
+offset_right = -120.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemsList" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.2, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1

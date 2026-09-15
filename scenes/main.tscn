@@ -8,6 +8,14 @@
 [ext_resource type="Script" path="res://scripts/combat_manager.gd" id="6_combat"]
 [ext_resource type="PackedScene" uid="uid://ui_scene_01" path="res://scenes/ui.tscn" id="7_ui"]
 [ext_resource type="Script" path="res://scripts/sound_generator.gd" id="8_sound"]
+[ext_resource type="PackedScene" uid="uid://dojo_ui_01" path="res://scenes/dojo_ui.tscn" id="9_dojo"]
+[ext_resource type="PackedScene" uid="uid://map_ui_01" path="res://scenes/world_map_ui.tscn" id="10_map"]
+[ext_resource type="PackedScene" uid="uid://armory_ui_01" path="res://scenes/armory_ui.tscn" id="11_armory"]
+[ext_resource type="PackedScene" uid="uid://shop_ui_01" path="res://scenes/shop_ui.tscn" id="12_shop"]
+[ext_resource type="PackedScene" uid="uid://training_ui_01" path="res://scenes/training_ui.tscn" id="13_train"]
+[ext_resource type="PackedScene" uid="uid://dialogue_ui_01" path="res://scenes/dialogue_ui.tscn" id="14_dlg"]
+[ext_resource type="PackedScene" uid="uid://rewards_modal_01" path="res://scenes/rewards_modal.tscn" id="15_rew"]
+[ext_resource type="PackedScene" uid="uid://profile_modal_01" path="res://scenes/profile_modal.tscn" id="16_prof"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
@@ -42,3 +50,26 @@ script = ExtResource("6_combat")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("7_ui")]
+
+[node name="DojoUI" parent="CanvasLayer" instance=ExtResource("9_dojo")]
+
+[node name="WorldMapUI" parent="CanvasLayer" instance=ExtResource("10_map")]
+visible = false
+
+[node name="ArmoryUI" parent="CanvasLayer" instance=ExtResource("11_armory")]
+visible = false
+
+[node name="ShopUI" parent="CanvasLayer" instance=ExtResource("12_shop")]
+visible = false
+
+[node name="TrainingUI" parent="CanvasLayer" instance=ExtResource("13_train")]
+visible = false
+
+[node name="DialogueUI" parent="CanvasLayer" instance=ExtResource("14_dlg")]
+visible = false
+
+[node name="RewardsModal" parent="CanvasLayer" instance=ExtResource("15_rew")]
+visible = false
+
+[node name="ProfileModal" parent="CanvasLayer" instance=ExtResource("16_prof")]
+visible = false

@@ -8,11 +8,16 @@ config_version=5
 
 config/name="Shadow Fighter: Dusk Duel"
 config/description="An original 2D silhouette martial-arts fighting game"
-config/version="1.0.0"
+config/version="3.0.0"
 run/main_scene="res://scenes/main.tscn"
 run/max_fps=60
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://assets/ui/icon.svg"
+
+[autoload]
+
+SaveData="*res://scripts/save_manager.gd"
+Progression="*res://scripts/progression_manager.gd"
 
 [display]
 

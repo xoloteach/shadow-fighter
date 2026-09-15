@@ -1,0 +1,142 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "name": "Chapter 1: The Broken Bell",
+      "subtitle": "Highland Monastery & Mist Valley",
+      "environment": "autumn_monastery",
+      "required_level": 1,
+      "boss_id": "boss_guro",
+      "tournaments": [
+        { "id": "t1_1", "name": "Novice Shinobi", "rank": 1, "level": 1, "power": 18, "weapon": "fists_bare", "armor": "gi_novice", "helmet": "headband_novice", "reward_coins": 45, "reward_xp": 25, "ai_profile": "passive" },
+        { "id": "t1_2", "name": "Mountain Scout", "rank": 2, "level": 1, "power": 24, "weapon": "katana_novice", "armor": "gi_novice", "helmet": "headband_novice", "reward_coins": 60, "reward_xp": 35, "ai_profile": "balanced" },
+        { "id": "t1_3", "name": "Temple Initiate", "rank": 3, "level": 2, "power": 32, "weapon": "katana_novice", "armor": "leather_tunic", "helmet": "straw_jingasa", "reward_coins": 85, "reward_xp": 50, "ai_profile": "defensive" },
+        { "id": "t1_4", "name": "Highland Bandit", "rank": 4, "level": 2, "power": 42, "weapon": "daggers_twin", "armor": "leather_tunic", "helmet": "straw_jingasa", "reward_coins": 110, "reward_xp": 70, "ai_profile": "aggressive" },
+        { "id": "t1_5", "name": "Rogue Spearman", "rank": 5, "level": 3, "power": 54, "weapon": "katana_novice", "armor": "leather_tunic", "helmet": "straw_jingasa", "reward_coins": 140, "reward_xp": 95, "ai_profile": "balanced" },
+        { "id": "t1_6", "name": "Bell Guardian", "rank": 6, "level": 3, "power": 66, "weapon": "cestus_iron", "armor": "monk_vestment", "helmet": "cowl_shadow", "reward_coins": 180, "reward_xp": 125, "ai_profile": "defensive" },
+        { "id": "t1_7", "name": "Shadow Adept", "rank": 7, "level": 4, "power": 80, "weapon": "daggers_twin", "armor": "monk_vestment", "helmet": "cowl_shadow", "reward_coins": 220, "reward_xp": 160, "ai_profile": "aggressive" },
+        { "id": "t1_8", "name": "Champion of the Peak", "rank": 8, "level": 4, "power": 96, "weapon": "cestus_iron", "armor": "monk_vestment", "helmet": "cowl_shadow", "reward_coins": 280, "reward_xp": 210, "ai_profile": "tactical" }
+      ],
+      "challenges": [
+        { "id": "c1_1", "name": "Challenge: Silent Footsteps", "rule": "no_jump", "rule_desc": "Airborne movement disabled. Master grounded spacing.", "level": 2, "power": 38, "weapon": "katana_novice", "armor": "leather_tunic", "helmet": "straw_jingasa", "reward_coins": 120, "reward_xp": 80 },
+        { "id": "c1_2", "name": "Challenge: Mountain Gale", "rule": "fast_timer", "rule_desc": "30-second rapid timer! Defeat the foe before time expires.", "level": 3, "power": 60, "weapon": "daggers_twin", "armor": "leather_tunic", "helmet": "straw_jingasa", "reward_coins": 160, "reward_xp": 110 },
+        { "id": "c1_3", "name": "Challenge: Iron Bones", "rule": "heavy_hits_only", "rule_desc": "Opponent only staggers from heavy hook, uppercut, or roundhouse kicks!", "level": 4, "power": 85, "weapon": "cestus_iron", "armor": "monk_vestment", "helmet": "cowl_shadow", "reward_coins": 240, "reward_xp": 170 }
+      ],
+      "bodyguards": [
+        { "id": "bg1_1", "name": "Swift Crow", "order": 1, "level": 2, "power": 45, "weapon": "daggers_twin", "armor": "gi_novice", "helmet": "headband_novice", "ai_profile": "aggressive", "reward_coins": 130, "reward_xp": 90, "quote": "The Bellkeeper gave you freedom, but the mountain will give you a grave." },
+        { "id": "bg1_2", "name": "Iron Boar", "order": 2, "level": 3, "power": 65, "weapon": "cestus_iron", "armor": "leather_tunic", "helmet": "straw_jingasa", "ai_profile": "defensive", "reward_coins": 175, "reward_xp": 130, "quote": "My armor was forged in temple bell bronze. Your small blades cannot touch me." },
+        { "id": "bg1_3", "name": "Mist Viper", "order": 3, "level": 4, "power": 85, "weapon": "daggers_twin", "armor": "monk_vestment", "helmet": "cowl_shadow", "ai_profile": "tactical", "reward_coins": 230, "reward_xp": 175, "quote": "Strike the fog, wanderer. You will bleed before you hear my footsteps." },
+        { "id": "bg1_4", "name": "Red Heron", "order": 4, "level": 4, "power": 105, "weapon": "katana_novice", "armor": "monk_vestment", "helmet": "cowl_shadow", "ai_profile": "tactical", "reward_coins": 300, "reward_xp": 230, "quote": "Only Warden Guro's iron spade awaits beyond this monastery threshold." }
+      ],
+      "boss": {
+        "id": "boss_guro",
+        "name": "Warden Guro",
+        "title": "The Iron Cleaver",
+        "level": 5,
+        "power": 135,
+        "max_hp": 160,
+        "weapon": "cestus_iron",
+        "armor": "monk_vestment",
+        "helmet": "iron_kabuto",
+        "ai_profile": "boss_guro",
+        "special_mechanic": "Iron Resolve (Gains unyielding hyper-armor on charge attacks; breaks low kicks)",
+        "reward_coins": 650,
+        "reward_xp": 450,
+        "intro_quote": "You dare ascend Mount Toran? The Twilight Bell is broken, and its shards belong to my lord Kurozuka! Bow your head, or I shall cleave your shadow in two!",
+        "defeat_quote": "Im... impossible! The bell's resonance lives inside your blade... Kurozuka will crush you in the capital..."
+      }
+    },
+    {
+      "id": 2,
+      "name": "Chapter 2: Lanterns in the Rain",
+      "subtitle": "Canal District & Floating Pavilion",
+      "environment": "rain_city",
+      "required_level": 5,
+      "boss_id": "boss_lin",
+      "tournaments": [
+        { "id": "t2_1", "name": "Canal Waterman", "rank": 1, "level": 5, "power": 120, "weapon": "kama_sickles", "armor": "river_silk", "helmet": "oni_halfmask", "reward_coins": 320, "reward_xp": 240, "ai_profile": "balanced" },
+        { "id": "t2_2", "name": "Pavilion Guard", "rank": 2, "level": 5, "power": 135, "weapon": "kama_sickles", "armor": "river_silk", "helmet": "oni_halfmask", "reward_coins": 360, "reward_xp": 270, "ai_profile": "aggressive" },
+        { "id": "t2_3", "name": "Silk Mercenary", "rank": 3, "level": 6, "power": 155, "weapon": "guandao_heavy", "armor": "river_silk", "helmet": "oni_halfmask", "reward_coins": 410, "reward_xp": 310, "ai_profile": "defensive" },
+        { "id": "t2_4", "name": "Rain Dancer Initiate", "rank": 4, "level": 6, "power": 175, "weapon": "kama_sickles", "armor": "river_silk", "helmet": "oni_halfmask", "reward_coins": 470, "reward_xp": 360, "ai_profile": "tactical" },
+        { "id": "t2_5", "name": "Underbridge Duelist", "rank": 5, "level": 7, "power": 200, "weapon": "guandao_heavy", "armor": "iron_cuirass", "helmet": "iron_kabuto", "reward_coins": 540, "reward_xp": 420, "ai_profile": "balanced" },
+        { "id": "t2_6", "name": "Syndicate Enforcer", "rank": 6, "level": 7, "power": 225, "weapon": "cestus_iron", "armor": "iron_cuirass", "helmet": "iron_kabuto", "reward_coins": 620, "reward_xp": 480, "ai_profile": "aggressive" },
+        { "id": "t2_7", "name": "Water Viper", "rank": 7, "level": 8, "power": 255, "weapon": "kama_sickles", "armor": "iron_cuirass", "helmet": "iron_kabuto", "reward_coins": 710, "reward_xp": 560, "ai_profile": "tactical" },
+        { "id": "t2_8", "name": "Grandmaster of the Canal", "rank": 8, "level": 8, "power": 290, "weapon": "guandao_heavy", "armor": "iron_cuirass", "helmet": "iron_kabuto", "reward_coins": 820, "reward_xp": 650, "ai_profile": "tactical" }
+      ],
+      "challenges": [
+        { "id": "c2_1", "name": "Challenge: Slippery Boardwalks", "rule": "high_knockback", "rule_desc": "All knockback impacts doubled! Keep opponent pinned near arena edges.", "level": 6, "power": 165, "weapon": "kama_sickles", "armor": "river_silk", "helmet": "oni_halfmask", "reward_coins": 450, "reward_xp": 340 },
+        { "id": "c2_2", "name": "Challenge: Torrential Mist", "rule": "no_block", "rule_desc": "Defense disabled! Pure offense and evasive footwork required.", "level": 7, "power": 210, "weapon": "guandao_heavy", "armor": "iron_cuirass", "helmet": "iron_kabuto", "reward_coins": 580, "reward_xp": 450 },
+        { "id": "c2_3", "name": "Challenge: Kunai Ambush", "rule": "ranged_threat", "rule_desc": "Opponent regularly hurls throwing stars from across the canal!", "level": 8, "power": 265, "weapon": "kama_sickles", "armor": "iron_cuirass", "helmet": "iron_kabuto", "reward_coins": 740, "reward_xp": 580 }
+      ],
+      "bodyguards": [
+        { "id": "bg2_1", "name": "Shadow Carp", "order": 1, "level": 6, "power": 170, "weapon": "kama_sickles", "armor": "river_silk", "helmet": "oni_halfmask", "ai_profile": "tactical", "reward_coins": 460, "reward_xp": 350, "quote": "The waters of Kawagishi conceal everything. Even the blood we shed tonight." },
+        { "id": "bg2_2", "name": "River Reed", "order": 2, "level": 7, "power": 215, "weapon": "guandao_heavy", "armor": "river_silk", "helmet": "oni_halfmask", "ai_profile": "defensive", "reward_coins": 570, "reward_xp": 440, "quote": "You bend like the reed, but my heavy polearm will snap your spine." },
+        { "id": "bg2_3", "name": "Ghost Crane", "order": 3, "level": 8, "power": 260, "weapon": "kama_sickles", "armor": "iron_cuirass", "helmet": "iron_kabuto", "ai_profile": "aggressive", "reward_coins": 700, "reward_xp": 540, "quote": "Madame Lin taught us that rain hides all tears. And all screams." },
+        { "id": "bg2_4", "name": "Drowning Willow", "order": 4, "level": 8, "power": 305, "weapon": "guandao_heavy", "armor": "iron_cuirass", "helmet": "iron_kabuto", "ai_profile": "tactical", "reward_coins": 850, "reward_xp": 660, "quote": "Step onto the Floating Pavilion if you wish. But only your corpse will float back." }
+      ],
+      "boss": {
+        "id": "boss_lin",
+        "name": "Madame Lin",
+        "title": "The Rain Weaver",
+        "level": 9,
+        "power": 360,
+        "max_hp": 220,
+        "weapon": "kama_sickles",
+        "armor": "river_silk",
+        "helmet": "oni_halfmask",
+        "ai_profile": "boss_lin",
+        "special_mechanic": "Rain Dance (Rapid dual-crescent flurry + evasive backflip and throwing kunai)",
+        "reward_coins": 1400,
+        "reward_xp": 950,
+        "intro_quote": "A wandering shadow enters my pavilion... How quaint. The shards of twilight bring prosperity to my city. You will not take them from my grasp!",
+        "defeat_quote": "Such fierce chi... You carry the weight of the mountain bell... Lord Kurozuka waits at the Smoldering Bastion. His fire will burn away your shadows..."
+      }
+    },
+    {
+      "id": 3,
+      "name": "Chapter 3: Ashes of the Banner",
+      "subtitle": "Smoldering Bastion & Obsidian Citadel",
+      "environment": "fire_citadel",
+      "required_level": 9,
+      "boss_id": "boss_kurozuka",
+      "tournaments": [
+        { "id": "t3_1", "name": "Bastion Sentry", "rank": 1, "level": 9, "power": 370, "weapon": "guandao_heavy", "armor": "ash_armor", "helmet": "iron_kabuto", "reward_coins": 900, "reward_xp": 700, "ai_profile": "defensive" },
+        { "id": "t3_2", "name": "Cinder Guard", "rank": 2, "level": 9, "power": 410, "weapon": "nodachi_obsidian", "armor": "ash_armor", "helmet": "iron_kabuto", "reward_coins": 1020, "reward_xp": 790, "ai_profile": "aggressive" },
+        { "id": "t3_3", "name": "Flame Scout", "rank": 3, "level": 10, "power": 460, "weapon": "dusk_twinsaber", "armor": "ash_armor", "helmet": "warlord_mask", "reward_coins": 1150, "reward_xp": 900, "ai_profile": "tactical" },
+        { "id": "t3_4", "name": "Ash Legionnaire", "rank": 4, "level": 10, "power": 510, "weapon": "nodachi_obsidian", "armor": "ash_armor", "helmet": "warlord_mask", "reward_coins": 1300, "reward_xp": 1020, "ai_profile": "defensive" },
+        { "id": "t3_5", "name": "Citadel Warden", "rank": 5, "level": 11, "power": 570, "weapon": "guandao_heavy", "armor": "obsidian_plate", "helmet": "warlord_mask", "reward_coins": 1480, "reward_xp": 1160, "ai_profile": "balanced" },
+        { "id": "t3_6", "name": "Dusk executioner", "rank": 6, "level": 11, "power": 640, "weapon": "nodachi_obsidian", "armor": "obsidian_plate", "helmet": "warlord_mask", "reward_coins": 1680, "reward_xp": 1320, "ai_profile": "aggressive" },
+        { "id": "t3_7", "name": "Black Sun Champion", "rank": 7, "level": 12, "power": 720, "weapon": "dusk_twinsaber", "armor": "obsidian_plate", "helmet": "warlord_mask", "reward_coins": 1920, "reward_xp": 1510, "ai_profile": "tactical" },
+        { "id": "t3_8", "name": "Sovereign Bodyguard", "rank": 8, "level": 12, "power": 810, "weapon": "nodachi_obsidian", "armor": "obsidian_plate", "helmet": "warlord_mask", "reward_coins": 2200, "reward_xp": 1740, "ai_profile": "tactical" }
+      ],
+      "challenges": [
+        { "id": "c3_1", "name": "Challenge: Molten Embers", "rule": "floor_burn", "rule_desc": "Continuous flame ticks on the floor! Stay airborne or strike decisively.", "level": 10, "power": 520, "weapon": "dusk_twinsaber", "armor": "ash_armor", "helmet": "warlord_mask", "reward_coins": 1350, "reward_xp": 1060 },
+        { "id": "c3_2", "name": "Challenge: The Iron Wall", "rule": "heavy_armor", "rule_desc": "Opponent blocks 80% of damage! You must use sweeps and guard-break combos.", "level": 11, "power": 660, "weapon": "nodachi_obsidian", "armor": "obsidian_plate", "helmet": "warlord_mask", "reward_coins": 1720, "reward_xp": 1360 },
+        { "id": "c3_3", "name": "Challenge: Eclipse Duel", "rule": "sudden_death", "rule_desc": "Double damage for both fighters! One opening decides the outcome.", "level": 12, "power": 830, "weapon": "dusk_twinsaber", "armor": "obsidian_plate", "helmet": "warlord_mask", "reward_coins": 2250, "reward_xp": 1780 }
+      ],
+      "bodyguards": [
+        { "id": "bg3_1", "name": "Ash Hound", "order": 1, "level": 10, "power": 530, "weapon": "dusk_twinsaber", "armor": "ash_armor", "helmet": "warlord_mask", "ai_profile": "aggressive", "reward_coins": 1380, "reward_xp": 1080, "quote": "The scent of ash is the only perfume this citadel recognizes." },
+        { "id": "bg3_2", "name": "Cinder Vanguard", "order": 2, "level": 11, "power": 670, "weapon": "guandao_heavy", "armor": "ash_armor", "helmet": "warlord_mask", "ai_profile": "defensive", "reward_coins": 1740, "reward_xp": 1370, "quote": "Lord Kurozuka granted us power beyond mortal flesh. Turn back, wanderer!" },
+        { "id": "bg3_3", "name": "Black Banner", "order": 3, "level": 11, "power": 750, "weapon": "nodachi_obsidian", "armor": "obsidian_plate", "helmet": "warlord_mask", "ai_profile": "tactical", "reward_coins": 1960, "reward_xp": 1540, "quote": "Under this banner, four provinces were subjugated. You are merely one more insect." },
+        { "id": "bg3_4", "name": "Flame Fang", "order": 4, "level": 12, "power": 850, "weapon": "dusk_twinsaber", "armor": "obsidian_plate", "helmet": "warlord_mask", "ai_profile": "tactical", "reward_coins": 2300, "reward_xp": 1820, "quote": "Enter the throne hall. Lord Kurozuka will grind your bones into the foundation of the new dawn!" }
+      ],
+      "boss": {
+        "id": "boss_kurozuka",
+        "name": "General Kurozuka",
+        "title": "The Ash Sovereign",
+        "level": 13,
+        "power": 980,
+        "max_hp": 300,
+        "weapon": "nodachi_obsidian",
+        "armor": "obsidian_plate",
+        "helmet": "warlord_mask",
+        "ai_profile": "boss_kurozuka",
+        "special_mechanic": "Ash Shockwave (Charged ground slam sending erupting chi geysers across the arena)",
+        "reward_coins": 4500,
+        "reward_xp": 3000,
+        "intro_quote": "So, Kage... you have journeyed across three provinces to reclaim the shards. But the Bell was never meant to protect us—it was meant to contain our true strength! Face the Sovereign of Dusk!",
+        "defeat_quote": "The bell... sings once more... Your chi is pure twilight, uncorrupted... Take the final shard, Wandering Blade. You are the true master of dusk..."
+      }
+    }
+  ]
+}

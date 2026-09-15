@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://map_ui_01"]
+
+[ext_resource type="Script" path="res://scripts/world_map_ui.gd" id="1_map"]
+[ext_resource type="Texture2D" path="res://assets/blender/v3/boss_guro.png" id="2_guro"]
+[ext_resource type="Texture2D" path="res://assets/blender/v3/boss_lin.png" id="3_lin"]
+[ext_resource type="Texture2D" path="res://assets/blender/v3/boss_kurozuka.png" id="4_kurozuka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.04, 0.04, 0.07, 0.95)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_back"]
+bg_color = Color(0.12, 0.10, 0.18, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.65, 0.8, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab"]
+bg_color = Color(0.10, 0.09, 0.16, 0.9)
+border_width_bottom = 3
+border_color = Color(0.85, 0.65, 0.25, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+bg_color = Color(0.07, 0.06, 0.12, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.65, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 32.0
+content_margin_top = 24.0
+content_margin_right = 32.0
+content_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_launch"]
+bg_color = Color(0.75, 0.2, 0.15, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.8, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="WorldMapUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_map")
+
+[node name="Backdrop" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="TopHeader" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="BtnBack" type="Button" parent="TopHeader"]
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_back")
+text = "< DOJO"
+
+[node name="Title" type="Label" parent="TopHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_font_sizes/font_size = 20
+text = "YAMASHIRO PROVINCES • CAMPAIGN MAP"
+horizontal_alignment = 1
+
+[node name="ChapterTabs" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 60.0
+offset_top = 76.0
+offset_right = -60.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BtnCh1" type="Button" parent="ChapterTabs"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab")
+text = "CHAPTER 1: THE BROKEN BELL"
+
+[node name="BtnCh2" type="Button" parent="ChapterTabs"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab")
+text = "CHAPTER 2: LANTERNS IN RAIN"
+
+[node name="BtnCh3" type="Button" parent="ChapterTabs"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab")
+text = "CHAPTER 3: ASHES OF BANNER"
+
+[node name="ModeTabs" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 120.0
+offset_top = 132.0
+offset_right = -120.0
+offset_bottom = 172.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BtnTourney" type="Button" parent="ModeTabs"]
+custom_minimum_size = Vector2(160, 38)
+layout_mode = 2
+text = "TOURNAMENT"
+
+[node name="BtnChallenges" type="Button" parent="ModeTabs"]
+custom_minimum_size = Vector2(160, 38)
+layout_mode = 2
+text = "CHALLENGES"
+
+[node name="BtnBoss" type="Button" parent="ModeTabs"]
+custom_minimum_size = Vector2(160, 38)
+layout_mode = 2
+text = "ELITES & BOSS"
+
+[node name="BtnSurvival" type="Button" parent="ModeTabs"]
+custom_minimum_size = Vector2(160, 38)
+layout_mode = 2
+text = "SURVIVAL TRIAL"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 190.0
+offset_right = -160.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FightsList" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="FightPreviewModal" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="FightPreviewModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.04, 0.85)
+
+[node name="Panel" type="PanelContainer" parent="FightPreviewModal"]
+custom_minimum_size = Vector2(560, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -180.0
+offset_right = 280.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBox" type="VBoxContainer" parent="FightPreviewModal/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TitleLabel" type="Label" parent="FightPreviewModal/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 22
+text = "TOURNAMENT: NOVICE SHINOBI"
+horizontal_alignment = 1
+
+[node name="BossPortrait" type="TextureRect" parent="FightPreviewModal/Panel/VBox"]
+visible = false
+custom_minimum_size = Vector2(0, 116)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+texture = ExtResource("2_guro")
+
+[node name="DescLabel" type="Label" parent="FightPreviewModal/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "Standard 3-round tournament rules."
+autowrap_mode = 2
+
+[node name="DifficultyLabel" type="Label" parent="FightPreviewModal/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Difficulty: FAIR (Your Power: 45 vs 32)"
+
+[node name="RewardsLabel" type="Label" parent="FightPreviewModal/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 15
+text = "Victory Rewards: +60 Monshu, +35 XP"
+
+[node name="Buttons" type="HBoxContainer" parent="FightPreviewModal/Panel/VBox"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="BtnCancel" type="Button" parent="FightPreviewModal/Panel/VBox/Buttons"]
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+text = "CANCEL"
+
+[node name="BtnLaunch" type="Button" parent="FightPreviewModal/Panel/VBox/Buttons"]
+custom_minimum_size = Vector2(180, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_launch")
+text = "FIGHT!"

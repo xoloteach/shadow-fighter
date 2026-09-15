@@ -6,6 +6,19 @@ Inspired by the atmospheric aesthetic of classic side-view silhouette martial-ar
 
 ---
 
+## Version 3: Bell of Twilight Campaign
+
+V3 expands the duel prototype into an original single-player progression campaign:
+
+- **Dojo hub** for campaign, training, armory, shop, and profile access.
+- **Three original chapters**: *The Broken Bell*, *Lanterns in the Rain*, and *Ashes of the Banner*, culminating in Warden Guro, Madame Lin, and General Kurozuka.
+- **Progression**: versioned local save, XP/level curve, Monshu currency, campaign unlocks, combat record, and 5-slot inventory.
+- **Equipment**: melee, armor, helmet, ranged, and special-art slots with ownership, upgrades, effective stat calculations, and distinct silhouette equipment visuals.
+- **Modes**: sequential tournaments, challenge-rule fights, elite/boss routes, a passive training dummy, and a six-wave survival gauntlet with 18% between-wave recovery.
+- **Refined AI**: explicit passive/defensive/aggressive/tactical/boss profiles, neutral input resets, attack cooldowns, controlled defensive reactions, and profile-specific decision timing.
+- **Challenge rules**: no jump, no block, heavy-hit armor, amplified knockback, floor burn, and sudden death are enforced by combat modifiers.
+- **Blender asset pipeline**: offline Blender 4.0.2 renders remain the source for 2D sprite content. V3 includes original boss portrait renders under `assets/blender/v3/`; gameplay remains 2D Godot physics.
+
 ## Key Features
 
 - **Viewport & Rendering**:
@@ -70,8 +83,8 @@ Inspired by the atmospheric aesthetic of classic side-view silhouette martial-ar
     - `L` / `C` / `Shift`: Block
     - `R` / `Enter`: Restart Match / Rematch
   - **Mobile Touch Controls**:
-    - On-screen virtual D-Pad (Left, Right, Jump, Crouch) and large dedicated action buttons (`PUNCH`, `KICK`, `BLOCK`).
-    - Toggle button (📱) on top bar to show/hide touch overlay.
+    - Touch-only circular virtual joystick with an 8-direction dead zone and crisp full-speed fighting-game movement.
+    - Separate multi-touch-safe `PUNCH`, `KICK`, and `BLOCK` buttons; desktop keyboard controls are unchanged.
 
 - **100% Procedural Synthesized Audio**:
   - No copyrighted external audio files.
